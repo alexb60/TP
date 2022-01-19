@@ -1,0 +1,353 @@
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+}
+
+header {
+  /* background: red; */
+  min-height: 400px;
+  background-image: url("../images/plombier1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+}
+
+.semi-transparent {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.container {
+  width: 1170px;
+  min-height: 350px;
+  margin: 0 auto;
+}
+
+.top {
+  /* background: yellow; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3%;
+}
+
+.top h1 {
+  color:  white;
+}
+
+.contact {
+  /* background: purple; */
+  width: 80%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.icone {
+  /* background: orange; */
+  margin: 10px;
+  color: white;
+  font-weight: bold;
+}
+
+.subtitleMenu {
+  text-transform: uppercase;
+  font-weight: normal;
+  color: #dddddd;
+}
+
+.nav {
+  background: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+}
+
+.menu {
+  background-color: black;
+  color: white;
+  width: 80%;
+  display: flex;
+  justify-content: flex-start;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.buttonMenu {
+  margin: 15px;
+}
+
+.quote {
+  background: blue;
+  color: white;
+  border: 1px solid blue;
+  padding: 1% 3%;
+}
+
+.bestPlumbing {
+  /* background: orange; */
+  margin: 8% 0 15% 1%;
+  width: 50%;
+}
+
+header .bestPlumbing h1 {
+  color: white;
+  font-size: 50px;
+}
+
+header .bestPlumbing h3 {
+  color: #eeeeee;
+}
+
+header .bestPlumbing p {
+  color: #eeeeee;
+}
+
+header .bestPlumbing button:first-child {
+  padding: 3% 5%;
+  background: blue;
+  color: white;
+  border: 1px solid blue;
+  margin-right: 2%;
+}
+
+header .bestPlumbing button:last-child {
+  padding: 3% 5%;
+  background: none;
+  border: 2px solid white;
+  color: white;
+}
+
+article {
+  /* background: red; */
+  min-height: 400px;
+  display: flex;
+  justify-content: center;
+}
+
+article .container {
+  width: 1170px;
+  min-height: 350px;
+  /* background: yellow; */
+  display: flex;
+  justify-content: center;
+}
+.ventouse {
+  width: 50%;
+  margin: 2%;
+}
+
+.subContainer {
+  /* background: green; */
+  margin: 2%;
+}
+
+.categorie {
+  color: blue;
+  font-weight: bold;
+  font-size: large;
+}
+
+article h2 {
+  font-size: 45px;
+}
+
+.checkbox {
+  /* background: orange; */
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5%;
+}
+
+.listCheck {
+  /* background: purple; */
+  width: 50%;
+}
+
+.iconeBlue {
+  color: blue;
+}
+
+.buttonBlue {
+  padding: 3% 5%;
+  background: blue;
+  color: white;
+  border: 1px solid blue;
+  margin-right: 2%;
+}
+
+.appel {
+  width: 50%;
+  margin: 2%;
+}
+
+article:nth-of-type(2) .container {
+  background: #cccccc;
+}
+
+article .choose {
+  /* background: yellow; */
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1%;
+}
+article .choose img {
+  width: 51px;
+  height: 51px;
+}
+article .choose h3 {
+  font-size: x-large;
+}
+
+article .choose div:last-child {
+  /* background: blue; */
+  width: 80%;
+}
+
+article .choose svg {
+  font-size: 4rem;
+  /* background-color: brown; */
+  color: blue;
+  text-align: center;
+  padding-top: 5%;
+}
+
+article:nth-of-type(3) {
+  display: block;
+  text-align: center;
+  width: 1170px;
+  min-height: 350px;
+  margin: 0 auto;
+}
+
+article:nth-of-type(3) h2 {
+  margin-bottom: 5%;
+}
+
+.conteneur {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.conteneur .services-elem {
+  width: 30%;
+}
+
+.conteneur .services-elem img {
+  width: 100%;
+  max-width: 100%;
+}
+.conteneur .services-elem svg {
+  color: blue;
+  font-size: 4rem;
+}
+
+.conteneur .services-elem div {
+  padding: 8%;
+  background-color: white;
+  margin: 0 8%;
+  position: relative;
+  top: -10%;
+}
+
+.conteneur .services-elem h3 {
+  font-size: 1.7rem;
+}
+
+.conteneur .services-elem p {
+  font-size: 1.2rem;
+  color: #444444;
+}
+
+footer {
+  background-color: black;
+  color: white;
+}
+
+/* header {
+  background-image: url("../images/plombier1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-blend-mode: darken;
+  width: max-content;
+}
+
+header section:first-child {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+header section:first-child h1 {
+  display: block;
+}
+
+header section:first-child div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.icone {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+header section:first-child div {
+  color: white;
+  font-weight: bold;
+}
+
+
+header section:nth-child(2) {
+  background: black;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+header section:nth-child(2) li {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+header section:nth-child(2) button {
+  padding: 3% 5%;
+  background: blue;
+  color: white;
+  border: 1px solid blue;
+  margin-right: 2%;
+}
+
+header section:last-child {
+  margin: 10% 0 0 0;
+  width: 40%;
+
+  color: white;
+}
+
+header section:last-child h1 {
+  font-size: 4rem;
+  margin: 0;
+}
+
+header section:last-child button:first-child {
+  padding: 3% 5%;
+  background: blue;
+  color: white;
+  border: 1px solid blue;
+  margin-right: 2%;
+}
+
+header section:last-child button:last-child {
+  padding: 3% 5%;
+  background: black;
+  border: 2px solid white;
+  color: white;
+} */

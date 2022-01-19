@@ -1,0 +1,229 @@
+body {
+	margin: 0;
+	font-family: Helvetica, Arial, sans-serif;
+}
+
+a {
+	text-decoration: none;
+}
+
+ul,
+li {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+/* HEADER */
+header {
+	background-image: url(../images/plombier.jpg);
+	background-size: cover;
+	display: flex;
+	justify-content: center;
+}
+
+.semi-transparent {
+	background: rgba(0, 0, 0, 0.6);
+	width: 100%;
+	padding-bottom: 150px;
+}
+
+.container {
+	width: 1170px;
+	margin: 0 auto;
+}
+
+.top {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.top h1 {
+	color: white;
+	font-weight: bold;
+	text-decoration: overline rgb(6, 144, 199) 7px;
+	padding-top: 5px;
+}
+
+.contact {
+	display: flex;
+	gap: 50px;
+}
+
+.contact p {
+	color: rgb(202, 198, 198);
+}
+.contact p::first-line {
+	color: white;
+	margin-bottom: 15px;
+	line-height: 40px;
+	font-size: 1.3rem;
+}
+
+/* NAVBAR */
+nav {
+	height: 65px;
+	background: black;
+	margin-top: 30px;
+}
+
+nav ul {
+	display: flex;
+	flex-direction: row;
+	align-items: stretch;
+	margin: 0;
+	padding: 0;
+}
+
+nav li:last-child {
+	margin-left: auto;
+}
+
+nav a {
+	color: white;
+	padding: 23px;
+	line-height: 65px;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+nav li:last-child a {
+	padding: 23px 40px;
+	background: blue;
+	border: 1px solid blue;
+}
+
+.local {
+	margin-top: 12rem;
+	width: 50%;
+	margin-bottom: 60px;
+}
+
+.local h3 {
+	font-size: 1.3rem;
+	font-weight: normal;
+	margin: 0;
+	padding: 0;
+}
+
+.local h2 {
+	font-size: 4rem;
+	color: white;
+	margin: 25px 0;
+	padding: 0;
+}
+
+.local h3,
+.local p {
+	color: rgb(223, 219, 219);
+}
+
+.contact-btn a,
+.about button {
+	padding: 20px;
+	background: #234bfa;
+	border: 1px solid #234bfa;
+	font-size: 0.9rem;
+	margin-right: 50px;
+	color: white;
+	font-weight: bold;
+}
+
+.contact-btn a:last-child {
+	background: transparent;
+	border: 1px solid white;
+	padding: 20px 30px;
+}
+
+/* ABOUT */
+section .container {
+	display: flex;
+}
+
+.about {
+	margin: 110px 0;
+}
+
+.about img {
+	width: 50%;
+	max-width: 50%;
+}
+
+.about article {
+	width: 50%;
+	padding: 0 7%;
+}
+
+.about ul {
+	columns: 2;
+	-webkit-columns: 2;
+	-moz-columns: 2;
+	column-fill: balance;
+	padding: 0 20px 0 20px;
+}
+
+.about h4,
+.choose h4 {
+	color: blue;
+	margin: 20px 0;
+	padding: 0;
+}
+
+.about h2,
+.choose h2 {
+	margin: 0;
+	padding: 0;
+	font-size: 3rem;
+}
+
+.about p,
+.choose p {
+	font-size: 1.1rem;
+	color: gray;
+	margin: 37px 0;
+}
+
+.about ul {
+	margin: 0 0 37px 0;
+	padding: 0;
+}
+
+.about li {
+	margin: 0 0 12px 0;
+	color: gray;
+	font-weight: bold;
+}
+
+.about li svg {
+	color: #3b7ed5;
+	font-size: 1.3rem;
+	margin-right: 12px;
+}
+/* CHOOSE */
+.choose {
+	background: #f5f5f5;
+    padding : 2rem 0;
+}
+
+.choose article,
+.choose img {
+	width: 50%;
+}
+
+.choose h3 {
+	display: inline;
+	font-size: 2rem;
+}
+
+.choose ul svg {
+	font-size: 3rem;
+	color: #5c85e7;
+	margin-right: 25px;
+	position: relative;
+	top: 17px;
+}
+
+.choose ul p {
+	margin: 1rem 4.8rem;
+}
