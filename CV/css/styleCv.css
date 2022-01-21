@@ -1,0 +1,111 @@
+body {
+  background: #dddddd;
+  font-family: Helvetica;
+}
+
+header {
+  background: cadetblue;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1%;
+}
+
+header h1 {
+  display: block;
+}
+
+header img {
+  display: block;
+  width: 50px;
+}
+
+section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding: 50px 0;
+}
+
+.blocktexte {
+  width: 30%;
+  background: white;
+  border-radius: 20px;
+}
+
+.blocktexte .title {
+  padding: 10px;
+  text-align: center;
+  border-radius: 20px 20px 0 0;
+  border-bottom: 1px solid #777777;
+}
+
+.blocktexte .contenu {
+  padding: 15px;
+  color: #555555;
+}
+.blocktexte .experience,
+.blocktexte .formation {
+  margin: 20px 0;
+}
+.blocktexte .job,
+.blocktexte .nomFormation {
+  font-size: 28px;
+}
+
+.title {
+  text-transform: uppercase;
+  font-size: 32px;
+  color: #555;
+  font-weight: bold;
+}
+
+.blocktexte ul {
+  list-style: none;
+}
+
+.blocktexte ul li {
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+.logos {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-top: 50px;
+}
+.logo {
+  height: 85px;
+}
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+    section {
+        display: block;
+    }
+    .blocktexte {
+        width: 80%;
+        margin: auto;
+        margin-bottom: 35px;
+    }
+    .logo {
+        height: 60px;
+    }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+}
