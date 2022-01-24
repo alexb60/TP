@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+}
+
+/* SYSTEMATIC */
+
+.systematic {
+    display: flex;
+    justify-content: center;
+}
+
+section .text_degrade {
+  background: rgb(115, 0, 255);
+  background: linear-gradient(180deg, rgba(115, 0, 255, 1) 0%, rgba(169, 0, 202, 1) 73%, rgba(203, 0, 168, 1) 100%);
+  color: white;
+  width: 50%;
+  padding: 8%;
+}
+
+section .text_degrade h2, .recent_posts h2 {
+    font-size: 2.5rem;
+}
+
+section .text_degrade p {
+    color: #bbbbbb;
+    font-size: 1rem;
+}
+
+.systematic > img {
+    width: 50%;
+}
+
+.text_degrade img {
+    width: 30%;
+}
+
+/* RECENT POSTS */
+
+.container{
+    width: 70%;
+    margin: 0 auto;
+}
+
+.recent_posts {
+    display: flex;
+    justify-content: space-between;
+}
+
+.recent_posts .posts {
+    display: flex;
+    justify-content: space-between;
+}
+
+.recent_posts .title {
+    width: 70%;
+    text-align: center;
+    padding: 10% 15%;
+}
+
+
+.recent_posts .post {
+    width: 31%;
+}
+
+.recent_posts .post img {
+    width: 100%;
+}
+
+.recent_posts a {
+    text-decoration: none;
+    color: #7300ff;
+}

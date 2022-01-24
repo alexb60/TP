@@ -533,6 +533,11 @@ footer > div:last-child {
   .top a {
     width: auto;
   }
+
+  .top a img {
+    width: 50%;
+  }
+
   .contact {
     display: block;
     margin: auto;
@@ -787,6 +792,11 @@ footer > div:last-child {
   .top a {
     width: auto;
   }
+
+  .top a img {
+    width: 50%;
+  }
+  
   .contact {
     display: block;
     margin: auto;
@@ -1042,6 +1052,11 @@ footer > div:last-child {
   .top a {
     width: auto;
   }
+
+  .top a img {
+    width: 50%;
+  }
+  
   .contact {
     display: block;
     margin: auto;
@@ -1297,6 +1312,11 @@ footer > div:last-child {
   .top a {
     width: auto;
   }
+
+  .top a img {
+    width: 50%;
+  }
+  
   .contact {
     display: block;
     margin: auto;
