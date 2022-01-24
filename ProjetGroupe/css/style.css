@@ -1,15 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
 body {
-    font-family: 'Roboto', sans-serif;
-    margin: 0;
+  font-family: "Roboto", sans-serif;
+  margin: 0;
 }
 
 /* SYSTEMATIC */
 
 .systematic {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 section .text_degrade {
@@ -20,56 +20,94 @@ section .text_degrade {
   padding: 8%;
 }
 
-section .text_degrade h2, .recent_posts h2 {
-    font-size: 2.5rem;
+section .text_degrade h2,
+.recent_posts h2,
+.contact h2 {
+  font-size: 2.5rem;
 }
 
 section .text_degrade p {
-    color: #bbbbbb;
-    font-size: 1rem;
+  color: #bbbbbb;
+  font-size: 1rem;
 }
 
 .systematic > img {
-    width: 50%;
+  width: 50%;
 }
 
 .text_degrade img {
-    width: 30%;
+  width: 30%;
 }
 
 /* RECENT POSTS */
 
-.container{
-    width: 70%;
-    margin: 0 auto;
+.container {
+  width: 70%;
+  margin: 0 auto;
 }
 
 .recent_posts {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .recent_posts .posts {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10%;
 }
 
 .recent_posts .title {
-    width: 70%;
-    text-align: center;
-    padding: 10% 15%;
+  width: 70%;
+  text-align: center;
+  padding: 10% 15%;
 }
 
-
 .recent_posts .post {
-    width: 31%;
+  width: 31%;
 }
 
 .recent_posts .post img {
-    width: 100%;
+  width: 100%;
 }
 
 .recent_posts a {
-    text-decoration: none;
-    color: #7300ff;
+  text-decoration: none;
+  color: #7300ff;
+}
+
+.recent_posts .post h3 {
+  font-size: 1.3rem;
+}
+
+.recent_posts .post p {
+  color: #444444;
+}
+
+/* CONTACT */
+
+.contact {
+  background-color: #7300ff;
+  color: white;
+}
+
+.contact .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.contact .container div {
+  width: 65%;
+  margin: 9% 0 4% 0;
+}
+
+.contact a {
+  width: 20%;
+  text-decoration: none;
+  color: white;
+  border: 1px solid white;
+  border-radius: 50px;
+  padding: 2% 1%;
+  text-align: center;
 }
