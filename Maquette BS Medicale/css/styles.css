@@ -10,3 +10,7 @@
 .card {
   border: none;
 }
+
+.border-top {
+    margin-bottom: 10% !important;
+}
