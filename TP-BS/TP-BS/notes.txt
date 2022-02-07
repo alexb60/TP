@@ -1,0 +1,17 @@
+header : info contact + reseaux sociaux
+logo + navbar
+slideshow
+presentation
+services
+chiffres cles
+l'equipe
+
+
+type machine
+
+
+
+temoignages
+nos clients
+footer
+copyright
