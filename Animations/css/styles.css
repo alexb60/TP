@@ -1,0 +1,19 @@
+@keyframes changer-couleur {
+  from {
+    background-color: greenyellow;
+  }
+  to {
+    background-color: skyblue;
+  }
+}
+
+p {
+  width: 25%;
+  animation-name: changer-couleur;
+  animation-duration: 6s;
+  animation-delay: 2s;
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+}
