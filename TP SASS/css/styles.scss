@@ -1,0 +1,23 @@
+$arriere: cyan;
+$couleur: darkblue;
+$font: 18px;
+$tailleH1: 3rem;
+
+body {
+  background-color: $arriere;
+  color: $couleur;
+  font-size: $font;
+}
+
+section {
+    h1 {
+        font-size: $tailleH1;
+    }
+    p {
+        color: $couleur;
+        padding: 1rem;
+    }
+    a {
+        text-decoration: none;
+    }
+}
