@@ -198,4 +198,49 @@ const todos = [
   },
 ];
 
-document.write(todos.map((todo) => todo.isCompleted));
+// todos.map((todo) =>
+//   todo.isCompleted
+//     ? document.write(`<br />La tâche n°${todo.id} est terminée.`)
+//     : document.write(`<br />La tâche n°${todo.id} n'est pas terminée.`)
+// );
+
+// // CORRECTION
+// todos.map((todo) => {
+//   document.write(`<br />La tâche n°${todo.id} ${todo.isCompleted ? "est" : "n'est pas"} terminée.`);
+// });
+
+// let voitures = [
+//   {
+//     id: 1,
+//     marque: "Mercedes",
+//     puissances: 10,
+//   },
+//   {
+//     id: 2,
+//     marque: "Renault",
+//     puissances: 8,
+//   },
+//   {
+//     id: 3,
+//     marque: "BMW",
+//     puissances: 12,
+//   },
+//   {
+//     id: 4,
+//     marque: "Ferrari",
+//     puissances: 30,
+//   },
+//   {
+//     id: 5,
+//     marque: "Maserati",
+//     puissances: 20,
+//   },
+// ];
+
+// voitures.map((voiture) => {
+//   document.write(voiture.puissances >= 10 ? `${voiture.marque} : ${voiture.puissances} ch <br />` : "");
+// });
+
+for (let i = 0; i < todos.length; i++) {
+  document.write(`Tâche n°${todos[i].id} : ${todos[i].text} - ${todos[i].isCompleted ? "terminée" : "non terminée"} <br />`);
+}
