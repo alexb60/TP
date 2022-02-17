@@ -495,33 +495,33 @@
 // let marque2 = "Tata";
 // rechercherMarque2(marquesVoitures, marque2);
 
-let voitures = [
-  {
-    id: 1,
-    marque: "Mercedes",
-    puissance: 10,
-  },
-  {
-    id: 2,
-    marque: "Renault",
-    puissance: 8,
-  },
-  {
-    id: 3,
-    marque: "BMW",
-    puissance: 12,
-  },
-  {
-    id: 4,
-    marque: "Ferrari",
-    puissance: 30,
-  },
-  {
-    id: 5,
-    marque: "Maserati",
-    puissance: 20,
-  },
-];
+// let voitures = [
+//   {
+//     id: 1,
+//     marque: "Mercedes",
+//     puissance: 10,
+//   },
+//   {
+//     id: 2,
+//     marque: "Renault",
+//     puissance: 8,
+//   },
+//   {
+//     id: 3,
+//     marque: "BMW",
+//     puissance: 12,
+//   },
+//   {
+//     id: 4,
+//     marque: "Ferrari",
+//     puissance: 30,
+//   },
+//   {
+//     id: 5,
+//     marque: "Maserati",
+//     puissance: 20,
+//   },
+// ];
 
 // let voituresPuissantes = voitures.filter((voiture) => {
 //   return voiture.puissance >= 10;
@@ -602,10 +602,103 @@ let voitures = [
 //   document.write(`${voiture.id} - ${voiture.marque} : ${voiture.puissance} ch <br />`);
 // });
 
-voitures
-  .filter((voiture) => {
-    return voiture.puissance >= 10;
+// voitures
+//   .filter((voiture) => {
+//     return voiture.puissance >= 10;
+//   })
+//   .map((voiture) => {
+//     document.write(`${voiture.id}- ${voiture.marque} : ${voiture.puissance} <br>`);
+//   });
+
+let eleves = [
+  {
+    prenom: "Morgan",
+    note: 25,
+  },
+  {
+    prenom: "Rudy",
+    note: 10,
+  },
+  {
+    prenom: "Christophe",
+    note: 11,
+  },
+  {
+    prenom: "Yves",
+    note: 17,
+  },
+  {
+    prenom: "Manu",
+    note: 2,
+  },
+  {
+    prenom: "Gaétan",
+    note: 5,
+  },
+  {
+    prenom: "Quentin",
+    note: 17,
+  },
+  {
+    prenom: "Sullivan",
+    note: 14,
+  },
+  {
+    prenom: "Lucile",
+    note: 16,
+  },
+  {
+    prenom: "Steven",
+    note: 7,
+  },
+  {
+    prenom: "Alexandre",
+    note: 8,
+  },
+  {
+    prenom: "Corentin",
+    note: 11,
+  },
+  {
+    prenom: "Brandon",
+    note: 15,
+  },
+  {
+    prenom: "Rayan",
+    note: 20,
+  },
+  {
+    prenom: "Abdel",
+    note: 9,
+  },
+  {
+    prenom: "Nicolas",
+    note: 11,
+  },
+  {
+    prenom: "Julien",
+    note: 12,
+  },
+  {
+    prenom: "Thomas",
+    note: 18,
+  },
+  {
+    prenom: "Maxime",
+    note: 16,
+  },
+  {
+    prenom: "Jonathan",
+    note: 13,
+  },
+];
+
+// filter et map >= 10
+
+eleves
+  .filter((eleve) => {
+    return eleve.note >= 10;
   })
-  .map((voiture) => {
-    document.write(`${voiture.id}- ${voiture.marque} : ${voiture.puissance} <br>`);
+  .map((eleve) => {
+    document.write(`${eleve.prenom} : ${eleve.note} <br />`);
   });

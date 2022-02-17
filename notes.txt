@@ -1,0 +1,280 @@
+Framework d'ajd : React, Angular, View
+
+Back et front échangent des informations via JSON
+
+CSS
+BACKGROUND IMAGE
+
+.class {
+	min-height: 300px;
+	background-image: url(chemin);
+}
+
+Chemin d'accès relatif : pour remonter d'un dossier = "../"
+
+Pour placer une image à une position précise en arrière plan : 
+	background-repeat: no-repeat;
+	background-position: horizontale verticale;
+
+Effet de parallaxe, image fixée en arrière plan :
+	background-attachment : fixed;
+
+border-radius : 15px 25px;
+			15 25
+			25 15
+
+ARRIERE PLAN IMAGE ET COULEUR
+
+background : #ff0000 url("chemin") no-repeat right top;		-> arrière plan rouge avec image non répétée positionnée en haut à droite
+
+HAUTEUR
+
+	height: 200px;
+		50%;	-> % de l'espace dispo (par rapport au parent)
+		100vh;	-> Toute la hauteur de l'écran (view height)
+
+LARGEUR
+	width:	800px;
+		90%;	-> % de l'espace dispo (par rapport au parent)	A PRIVILÉGIER !
+		100vw;	-> Toute la largeur de l'écran (view width)
+si débordement gérer la propriété overflow
+
+TAILLE DE POLICE
+	font-size:	18px;
+			1.5em;	-> coef par rapport à taille du parent
+			2rem;	-> coef par rapport à la taille de la balise html (16px par défaut) RECOMMANDÉ !
+
+POLICES
+	font-family	= le nom de la police
+	font-style	= italique, etc.
+	font-weight	= le gras
+
+LISTES
+	list-style:	none;
+
+DISPLAY
+	display: inline;	-> ne prend que la place dont il a besoin, le suivant se met à côté
+	display: block;		-> prend toute la largeur de la page
+	display: none;		-> n'affiche pas du tout sur la page
+	visibility: hidden;	-> n'affiche pas l'élément mais conserve sa place sur la page
+
+PSEUDO ÉLEMENTS
+	sélecteur::pseudoÉlément {
+		propriété: value;
+	}
+
+	first-line	-> styliser la 1ere ligne
+	first-letter	-> styliser la 1ere lettre
+
+	selection	-> s'utilise sans sélecteur, permet de styliser le texte sélectionné avec la souris
+
+	before		-> insère du contenu avant l'élément sélectionné
+	after		-> insère du contenu après l'élément sélectionné
+
+
+PSEUDO CLASSES
+	first-child	-> prend le 1er enfant
+	last-child	-> prend le dernier enfant
+	nth-child(n)	-> prend le nième enfant
+
+	first-of-type	-> prend le premier élément du type indiqué
+	last-of-type	-> prend le dernier élément du type indiqué
+	nth-of-type(n)	-> prend le nième élément du type indiqué
+
+	Liste :	https://www.w3schools.com/css/css_pseudo_classes.asp
+
+SÉLECTEUR D'ENFANT DIRECT
+
+	>
+	exemple : div > p	-> sélectionne tous les enfants directs de l'élément (ici div)
+
+SÉLECTEUR DE FRÈRES GÉNÉRAL
+
+	~
+	exemple : div ~ p	-> sélectionne les p qui sont des frères SUIVANTS le div
+
+SÉLECTEUR DE FRÈRES SUIVANTS ET ADJACENTS
+	
+	+
+	exemple : 	-> sélectionne les éléments qui sont les frères suivants et adjacents
+
+FLEX
+	display: flex;
+	justify-content:	-> gère l'affichage horizontal
+	align-items:		-> gère l'affichage vertical
+	flex-wrap:		-> force le retour à la ligne
+
+Il faut spécifier la largeur pour définir la position
+flex wrap + changer width des blocs
+
+CENTRER UNE IMAGE EN DISPLAY BLOCK
+	margin : 0 auto;
+
+COMPRESSER UNE IMAGE
+	https://tinypng.com/
+
+GENERATEUR BORDER RADIUS
+	https://9elements.github.io/fancy-border-radius/
+
+=== DISPLAY FLEX ===
+
+1- Pour les enfants (éléments que je veux aligner) :
+	- préciser une largeur et une hauteur si besoin
+2- Pour le parent
+	- faire un display flex
+	- gérer l'alignement horizontal
+	- gérer l'alignement vertical
+NB :
+	- pour gérer l'alignement horizontal on utilise justify-content
+	- gérer l'alignement vertical, on utilise align-items
+
+======================
+
+
+FLEX BOX
+
+1- dessiner un wireframe
+2- mettre la structure html correspondante
+3- mettre du contenu test dans chacun des blocs
+4- accorder des bordures et un arrière-plan différents pour chaque bloc
+5- faire le découpage avec le flex box
+6- mettre le vrai contenu
+7- le styliser
+
+======================
+
+GIMP
+
+Supprimer le fond d'une image :
+
+Calque > Transparence > Ajouter un canal alpha
+
+
+
+== VISUAL STUDIO CODE ==
+
+ctrl + f2 = remplacer toutes les occurences
+ctrl + : = mettre en commentaire
+
+alt + maj + ↓ = copier coller la dernière ligne vers le bas
+
+=== GITHUB ===
+
+→ aller dans le dossier
+→ clic droit > Git bash here
+→ git init
+→ git add *			> sélectionne tout
+→ git status			> montre le statut des fichiers
+→ git commit -m "texte"		> création du commit
+→ git remote add origin <url>	
+→ git push -u origin master
+
+POUR CHAQUE NOUVEAU DÉPÔT : 1 FOIS
+
+get init
+get remote add origin <url>
+
+POUR CHAQUE COMMIT : N FOIS	
+
+git add *
+git status (optionnel)
+git commit -m "texte"
+git push -u origin master
+
+
+
+==== PRESENTATION ORALE ====
+
+Présenter le projet :
+à quoi il sert ? pourquoi ? les problématiques, l'utilité
+
+Volume, dynamisme de la parole, éviter le ton monotone
+
+posture : debout, droit, regarder le public entièrement, se déplacer en triangle, explications détaillées : du général au détail
+
+
+==== BOOTSTRAP ====
+
+jquery = premier script à intégrer
+bootstrap 4.6
+jquery 3.5.1
+
+Le composant popover n'est pas activé par défaut
+
+Le bundle est composé de Bootstrap et du JS du popover
+
+<script>
+            $('*[data-toggle="popover"]').popover("enable");
+        </script>
+
+Front et back office = fonctionnalités
+
+========================
+
+Aligner icône et texte au même niveau : mettre height et line-height de même valeur
+
+========================
+
+ANIMATIONS CSS
+
+@keyframes changer-couleur {
+  from {background-color: greenyellow;}
+  to {background-color: skyblue};
+}
+
+Bibliothèque animation : animista
+
+propriété transition se met dans l'état initial de l'élément
+
+activer AOS avec la fonction init
+
+=========================
+
+SASS
+
+Dans invite de commandes :
+sass --watch chemin/fichier.scss chemin/fichier.css
+
+→ Inclure le fichier CSS dans le HTML !
+
+=========================
+
+JAVASCRIPT
+
+`bla bla ${variable} bla bla`	-> ajout d'une variable dans une chaîne de caractères
+console.log(typeof variable)	-> permet de connaître le type de la variable
+null				-> n'a pas de valeur
+""				-> null
+
+- CHAINES DE CARACTERES -
+
+variable.length			-> longueur d'une chaîne de caractères
+variable.toUpperCase()		-> afficher la chaîne de caractères en majuscule
+variable.toLowerCase()		-> afficher la chaîne de caractères en minuscule
+variable.substring(0,3)		-> extrait les caractères 0 à 2 d'une chaîne de caractères
+
+--------------
+
+1 == "1"	-> Égalité de la valeur, ici vrai
+1 === "1"	-> Égalité du type et de la valeur, ici faux
+
+- IF TERNAIRE -
+
+variable = condition ? traitement vrai : traitement faux ;
+
+
+- SWITCH -
+
+
+
+		Variante 1		Variante 2
+
+Switch		variable		true
+Case		valeurs exactes		expressions
+
+- FILTER -
+
+tab2 = tab.filter(callback)
+
+retourne dans tab2, les valeurs de tab filtrées selon la callback
+return OBLIGATOIRE !
