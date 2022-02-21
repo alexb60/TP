@@ -1,3 +1,27 @@
+=== HTML ===
+
+- TABLEAUX -
+
+<table>
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+</table>
+
+tr = ligne
+th = cellule de tête
+td = cellule
+
+=============================
+
+
 Framework d'ajd : React, Angular, View
 
 Back et front échangent des informations via JSON
@@ -246,6 +270,10 @@ console.log(typeof variable)	-> permet de connaître le type de la variable
 null				-> n'a pas de valeur
 ""				-> null
 
+- TESTER SI UNE VARIABLE EST UN TABLEAU -
+
+Array.isArray(variable)
+
 - CHAINES DE CARACTERES -
 
 variable.length			-> longueur d'une chaîne de caractères
@@ -258,14 +286,16 @@ variable.substring(0,3)		-> extrait les caractères 0 à 2 d'une chaîne de cara
 1 == "1"	-> Égalité de la valeur, ici vrai
 1 === "1"	-> Égalité du type et de la valeur, ici faux
 
+--------------
+
++=		-> concaténation
+
 - IF TERNAIRE -
 
 variable = condition ? traitement vrai : traitement faux ;
 
 
 - SWITCH -
-
-
 
 		Variante 1		Variante 2
 
@@ -278,3 +308,7 @@ tab2 = tab.filter(callback)
 
 retourne dans tab2, les valeurs de tab filtrées selon la callback
 return OBLIGATOIRE !
+
+- FONCTIONS DANS LES OBJETS -
+
+this.attribut	-> permet d'appeler l'attribut dans la fonction

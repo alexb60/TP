@@ -610,10 +610,103 @@
 //     document.write(`${voiture.id}- ${voiture.marque} : ${voiture.puissance} <br>`);
 //   });
 
+// let eleves = [
+//   {
+//     prenom: "Morgan",
+//     note: 25,
+//   },
+//   {
+//     prenom: "Rudy",
+//     note: 10,
+//   },
+//   {
+//     prenom: "Christophe",
+//     note: 11,
+//   },
+//   {
+//     prenom: "Yves",
+//     note: 17,
+//   },
+//   {
+//     prenom: "Manu",
+//     note: 2,
+//   },
+//   {
+//     prenom: "Gaétan",
+//     note: 5,
+//   },
+//   {
+//     prenom: "Quentin",
+//     note: 17,
+//   },
+//   {
+//     prenom: "Sullivan",
+//     note: 14,
+//   },
+//   {
+//     prenom: "Lucile",
+//     note: 16,
+//   },
+//   {
+//     prenom: "Steven",
+//     note: 7,
+//   },
+//   {
+//     prenom: "Alexandre",
+//     note: 8,
+//   },
+//   {
+//     prenom: "Corentin",
+//     note: 11,
+//   },
+//   {
+//     prenom: "Brandon",
+//     note: 15,
+//   },
+//   {
+//     prenom: "Rayan",
+//     note: 20,
+//   },
+//   {
+//     prenom: "Abdel",
+//     note: 9,
+//   },
+//   {
+//     prenom: "Nicolas",
+//     note: 11,
+//   },
+//   {
+//     prenom: "Julien",
+//     note: 12,
+//   },
+//   {
+//     prenom: "Thomas",
+//     note: 18,
+//   },
+//   {
+//     prenom: "Maxime",
+//     note: 16,
+//   },
+//   {
+//     prenom: "Jonathan",
+//     note: 13,
+//   },
+// ];
+
+// // filter et map >= 10
+
+// eleves
+//   .filter((eleve) => {
+//     return eleve.note >= 10;
+//   })
+//   .map((eleve) => {
+//     document.write(`${eleve.prenom} : ${eleve.note} <br />`);
+//   });
+
 let eleves = [
   {
     prenom: "Morgan",
-    note: 25,
+    note: 5,
   },
   {
     prenom: "Rudy",
@@ -633,7 +726,7 @@ let eleves = [
   },
   {
     prenom: "Gaétan",
-    note: 5,
+    note: 20,
   },
   {
     prenom: "Quentin",
@@ -693,12 +786,80 @@ let eleves = [
   },
 ];
 
-// filter et map >= 10
+//Calcule la moyenne
+function moyenne(tab) {
+  let somme = 0;
+  for (let i = 0; i < tab.length; i++) {
+    somme += tab[i].note;
+  }
+  return somme / tab.length;
+}
 
-eleves
-  .filter((eleve) => {
-    return eleve.note >= 10;
-  })
-  .map((eleve) => {
-    document.write(`${eleve.prenom} : ${eleve.note} <br />`);
-  });
+//Cherche la note maximale
+function meilleureNote(tab) {
+  let bestNote = -1;
+  for (let i = 0; i < tab.length; i++) {
+    if (tab[i].note > bestNote) {
+      bestNote = tab[i].note;
+    }
+  }
+  return bestNote;
+}
+
+//Donne le(s) nom(s) du (des) meilleur(s) élève(s)
+function meilleurEleve(tab, noteMax) {
+  let bestEleve = "";
+  for (let i = 0; i < tab.length; i++) {
+    if (tab[i].note == noteMax) {
+      bestEleve += tab[i].prenom + ", ";
+    }
+  }
+  return bestEleve;
+}
+
+//Cherche la note minimale
+function pireNote(tab) {
+  let worstNote = 1000;
+  for (let i = 0; i < tab.length; i++) {
+    if (tab[i].note < worstNote) {
+      worstNote = tab[i].note;
+    }
+  }
+  return worstNote;
+}
+
+//Donne le(s) nom(s) du (des) pire(s) élève(s)
+function pireEleve(tab, noteMin) {
+  let worstEleve = "";
+  for (let i = 0; i < tab.length; i++) {
+    if (tab[i].note == noteMin) {
+      worstEleve += tab[i].prenom + ", ";
+    }
+  }
+  return worstEleve;
+}
+
+let moy = moyenne(eleves);
+let noteMax = meilleureNote(eleves);
+let bonEleve = meilleurEleve(eleves, noteMax);
+let noteMin = pireNote(eleves);
+let mauvaisEleve = pireEleve(eleves, noteMin);
+
+document.write(`<table>
+<tr>
+  <th>Nb élèves</th>
+  <th>Moyenne</th>
+  <th>Nom(s) du (des) meilleur(s) élève(s)</th>
+  <th>Note max</th>
+  <th>Nom(s) du (des) pire(s) élève(s)</th>
+  <th>Note min</th>
+</tr>
+<tr>
+  <td>${eleves.length}</td>
+  <td>${moy}</td>
+  <td>${bonEleve}</td>
+  <td>${noteMax}</td>
+  <td>${mauvaisEleve}</td>
+  <td>${noteMin}</td>
+</tr>
+</table>`);
