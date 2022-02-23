@@ -1125,15 +1125,51 @@
 // const sectionContainer = document.querySelector("section.container");
 // console.log(sectionContainer);
 
-document.getElementsByTagName("ul")[1].innerHTML = "<li><a href='www.afpa.fr'>Lien</a></li>";
-document.querySelector(".container ul:nth-of-type(2)").innerHTML = `<li> <a href='#'>Lien</a> </li>`;
-document.querySelector(".parent").innerHTML = `<section>
-<p>
-  Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil minus placeat eaque iure sint iusto? Accusamus nesciunt
-  corporis sequi fugit exercitationem omnis enim maiores ipsam! Saepe ducimus dolorum iure excepturi.
-</p>
-<p>
-  Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis est aperiam iste distinctio. Consectetur magnam repellat
-  dignissimos ab pariatur eveniet placeat aliquid facere asperiores exercitationem? Inventore natus magnam iure libero?
-</p>
-</section>`;
+// document.getElementsByTagName("ul")[1].innerHTML = "<li><a href='www.afpa.fr'>Lien</a></li>";
+// document.querySelector(".container ul:nth-of-type(2)").innerHTML = `<li> <a href='#'>Lien</a> </li>`;
+
+// document.querySelector(".parent").innerHTML = `<section>
+// <p>
+//   Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil minus placeat eaque iure sint iusto? Accusamus nesciunt
+//   corporis sequi fugit exercitationem omnis enim maiores ipsam! Saepe ducimus dolorum iure excepturi.
+// </p>
+// <p>
+//   Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis est aperiam iste distinctio. Consectetur magnam repellat
+//   dignissimos ab pariatur eveniet placeat aliquid facere asperiores exercitationem? Inventore natus magnam iure libero?
+// </p>
+// </section>`;
+
+//Récupération des éléments du DOM dans des variables
+const myForm = document.querySelector("#my-form");
+const nameInput = document.querySelector("#name");
+const emailInput = document.querySelector("#email");
+const msg = document.querySelector(".msg");
+const userList = document.querySelector("#users");
+//element.addEventListener("evenement", cb);
+myForm.addEventListener("submit", onSubmit);
+
+// e :  levenement qui s'est déclenché
+function onSubmit(e) {
+  e.preventDefault();
+  // champs non remplis
+  if (nameInput.value === "" || emailInput.value === "") {
+    msg.innerHTML = "Merci de remplir tous les champs";
+    msg.classList.add("error");
+
+    // setTimeout(cb, delai) : execute la cb apres un delai (ms)
+    setTimeout(() => {
+      msg.innerHTML = "";
+      msg.classList.remove("error");
+    }, 2000);
+  }
+  //    champs remplis
+  else {
+    // <li> </li>
+    const li = document.createElement("li");
+    li.innerHTML = `<strong>${nameInput.value} </strong> : ${emailInput.value}`;
+    // insertion du li dans la ul
+    userList.appendChild(li);
+    nameInput.value = "";
+    emailInput.value = "";
+  }
+}

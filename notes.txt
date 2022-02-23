@@ -318,3 +318,65 @@ this.attribut	-> permet d'appeler l'attribut dans la fonction
 .textContent	-> permet de récupérer la valeur textuelle d'un élément, s'il y a des enfants il ne récupère que le texte mais pas la partie HTML
 
 element.textContent = nouvelleValeur	//Modifie le contenu textuel par la valeur donnée, s'il y a une partie HTML elle sera écrasée
+
+- EVENEMENTS -
+
+element.adEventListener("evenement", callback)
+
+Par convention le paramètre de l'événement est noté e ou event ou parfois evt
+
+
+------
+Exemple : Envoi d'un formulaire
+
+//récupérer les champs
+const myForm = document.querySelector("#my-form");
+myForm.addEventListener("submit", onSubmit);
+
+function onSubmit(e) {
+	e.preventDefault();	//empêche le comportement par défaut de l'événement
+	
+
+setTimeout(callback, delai)	//exécute la callback après un délai en ms
+
+
+
+=========================
+
+JQUERY
+
+Le symbole de jQuery : $
+
+exemple:
+console.log($(".para1")); //sélecteur
+console.log($(document)); //objet
+
+
+$(document).ready(callback);	-> attends que le document soit entièrement chargé
+
+element.text()			-> équivalent de .innerText
+
+méthode css()			-> ajoute du style en ligne à un élément
+exemple :	$(selecteur).css("propriété", "valeur");
+variante:	$(selecteur).css({"propriété":"valeur", "propriété": "valeur", ...});
+
+- Parcours du DOM -
+
+La fonction find cherche un élément à partir du sélecteur donné
+$(selecteur).find(selecteur).fonction();
+
+La fonction children retourne les enfants directs du sélecteur, le 2e sélecteur permet de filtrer (il est optionnel)
+$(selecteur).children(selecteur2).fonction();
+
+La fonction parent retourne le parent direct d’un sélecteur
+$(selecteur).parent().fonction();
+
+La fonction closest retourne le parent le plus proche d’un sélecteur
+$(selecteur).closest(selecteur).fonction();
+
+La fonction next retourne le frère suivant d’un sélecteur
+$(selecteur).next().fonction();
+
+La fonction prev retourne le frère précédent d’un sélecteur
+$(selecteur).prev().fonction();
+
