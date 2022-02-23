@@ -703,163 +703,437 @@
 //     document.write(`${eleve.prenom} : ${eleve.note} <br />`);
 //   });
 
-let eleves = [
-  {
-    prenom: "Morgan",
-    note: 5,
-  },
-  {
-    prenom: "Rudy",
-    note: 10,
-  },
-  {
-    prenom: "Christophe",
-    note: 11,
-  },
-  {
-    prenom: "Yves",
-    note: 17,
-  },
-  {
-    prenom: "Manu",
-    note: 2,
-  },
-  {
-    prenom: "Gaétan",
-    note: 20,
-  },
-  {
-    prenom: "Quentin",
-    note: 17,
-  },
-  {
-    prenom: "Sullivan",
-    note: 14,
-  },
-  {
-    prenom: "Lucile",
-    note: 16,
-  },
-  {
-    prenom: "Steven",
-    note: 7,
-  },
-  {
-    prenom: "Alexandre",
-    note: 8,
-  },
-  {
-    prenom: "Corentin",
-    note: 11,
-  },
-  {
-    prenom: "Brandon",
-    note: 15,
-  },
-  {
-    prenom: "Rayan",
-    note: 20,
-  },
-  {
-    prenom: "Abdel",
-    note: 9,
-  },
-  {
-    prenom: "Nicolas",
-    note: 11,
-  },
-  {
-    prenom: "Julien",
-    note: 12,
-  },
-  {
-    prenom: "Thomas",
-    note: 18,
-  },
-  {
-    prenom: "Maxime",
-    note: 16,
-  },
-  {
-    prenom: "Jonathan",
-    note: 13,
-  },
-];
+// let eleves = [
+//   {
+//     prenom: "Morgan",
+//     note: 5,
+//   },
+//   {
+//     prenom: "Rudy",
+//     note: 10,
+//   },
+//   {
+//     prenom: "Christophe",
+//     note: 11,
+//   },
+//   {
+//     prenom: "Yves",
+//     note: 17,
+//   },
+//   {
+//     prenom: "Manu",
+//     note: 2,
+//   },
+//   {
+//     prenom: "Gaétan",
+//     note: 20,
+//   },
+//   {
+//     prenom: "Quentin",
+//     note: 17,
+//   },
+//   {
+//     prenom: "Sullivan",
+//     note: 14,
+//   },
+//   {
+//     prenom: "Lucile",
+//     note: 16,
+//   },
+//   {
+//     prenom: "Steven",
+//     note: 7,
+//   },
+//   {
+//     prenom: "Alexandre",
+//     note: 8,
+//   },
+//   {
+//     prenom: "Corentin",
+//     note: 11,
+//   },
+//   {
+//     prenom: "Brandon",
+//     note: 15,
+//   },
+//   {
+//     prenom: "Rayan",
+//     note: 20,
+//   },
+//   {
+//     prenom: "Abdel",
+//     note: 9,
+//   },
+//   {
+//     prenom: "Nicolas",
+//     note: 11,
+//   },
+//   {
+//     prenom: "Julien",
+//     note: 12,
+//   },
+//   {
+//     prenom: "Thomas",
+//     note: 18,
+//   },
+//   {
+//     prenom: "Maxime",
+//     note: 16,
+//   },
+//   {
+//     prenom: "Jonathan",
+//     note: 13,
+//   },
+// ];
 
-//Calcule la moyenne
-function moyenne(tab) {
-  let somme = 0;
-  for (let i = 0; i < tab.length; i++) {
-    somme += tab[i].note;
-  }
-  return somme / tab.length;
-}
+//        MON TRAVAIL        //
 
-//Cherche la note maximale
-function meilleureNote(tab) {
-  let bestNote = -1;
-  for (let i = 0; i < tab.length; i++) {
-    if (tab[i].note > bestNote) {
-      bestNote = tab[i].note;
-    }
-  }
-  return bestNote;
-}
+// //Calcule la moyenne
+// function moyenne(tab) {
+//   let somme = 0;
+//   for (let i = 0; i < tab.length; i++) {
+//     somme += tab[i].note;
+//   }
+//   return somme / tab.length;
+// }
 
-//Donne le(s) nom(s) du (des) meilleur(s) élève(s)
-function meilleurEleve(tab, noteMax) {
-  let bestEleve = "";
-  for (let i = 0; i < tab.length; i++) {
-    if (tab[i].note == noteMax) {
-      bestEleve += tab[i].prenom + ", ";
-    }
-  }
-  return bestEleve;
-}
+// //Cherche la note maximale
+// function meilleureNote(tab) {
+//   let bestNote = -1;
+//   for (let i = 0; i < tab.length; i++) {
+//     if (tab[i].note > bestNote) {
+//       bestNote = tab[i].note;
+//     }
+//   }
+//   return bestNote;
+// }
 
-//Cherche la note minimale
-function pireNote(tab) {
-  let worstNote = 1000;
-  for (let i = 0; i < tab.length; i++) {
-    if (tab[i].note < worstNote) {
-      worstNote = tab[i].note;
-    }
-  }
-  return worstNote;
-}
+// //Donne le(s) nom(s) du (des) meilleur(s) élève(s)
+// function meilleurEleve(tab, noteMax) {
+//   let bestEleve = "";
+//   for (let i = 0; i < tab.length; i++) {
+//     if (tab[i].note == noteMax) {
+//       bestEleve += tab[i].prenom + ", ";
+//     }
+//   }
+//   return bestEleve;
+// }
 
-//Donne le(s) nom(s) du (des) pire(s) élève(s)
-function pireEleve(tab, noteMin) {
-  let worstEleve = "";
-  for (let i = 0; i < tab.length; i++) {
-    if (tab[i].note == noteMin) {
-      worstEleve += tab[i].prenom + ", ";
-    }
-  }
-  return worstEleve;
-}
+// //Cherche la note minimale
+// function pireNote(tab) {
+//   let worstNote = 1000;
+//   for (let i = 0; i < tab.length; i++) {
+//     if (tab[i].note < worstNote) {
+//       worstNote = tab[i].note;
+//     }
+//   }
+//   return worstNote;
+// }
 
-let moy = moyenne(eleves);
-let noteMax = meilleureNote(eleves);
-let bonEleve = meilleurEleve(eleves, noteMax);
-let noteMin = pireNote(eleves);
-let mauvaisEleve = pireEleve(eleves, noteMin);
+// //Donne le(s) nom(s) du (des) pire(s) élève(s)
+// function pireEleve(tab, noteMin) {
+//   let worstEleve = "";
+//   for (let i = 0; i < tab.length; i++) {
+//     if (tab[i].note == noteMin) {
+//       worstEleve += tab[i].prenom + ", ";
+//     }
+//   }
+//   return worstEleve;
+// }
 
-document.write(`<table>
-<tr>
-  <th>Nb élèves</th>
-  <th>Moyenne</th>
-  <th>Nom(s) du (des) meilleur(s) élève(s)</th>
-  <th>Note max</th>
-  <th>Nom(s) du (des) pire(s) élève(s)</th>
-  <th>Note min</th>
-</tr>
-<tr>
-  <td>${eleves.length}</td>
-  <td>${moy}</td>
-  <td>${bonEleve}</td>
-  <td>${noteMax}</td>
-  <td>${mauvaisEleve}</td>
-  <td>${noteMin}</td>
-</tr>
-</table>`);
+// let moy = moyenne(eleves);
+// let noteMax = meilleureNote(eleves);
+// let bonEleve = meilleurEleve(eleves, noteMax);
+// let noteMin = pireNote(eleves);
+// let mauvaisEleve = pireEleve(eleves, noteMin);
+
+// document.write(`<table>
+// <tr>
+//   <th>Nb élèves</th>
+//   <th>Moyenne</th>
+//   <th>Nom(s) du (des) meilleur(s) élève(s)</th>
+//   <th>Note max</th>
+//   <th>Nom(s) du (des) pire(s) élève(s)</th>
+//   <th>Note min</th>
+// </tr>
+// <tr>
+//   <td>${eleves.length}</td>
+//   <td>${moy}</td>
+//   <td>${bonEleve}</td>
+//   <td>${noteMax}</td>
+//   <td>${mauvaisEleve}</td>
+//   <td>${noteMin}</td>
+// </tr>
+// </table>`);
+
+// //        "CORRECTION"        //
+// function getData(tab) {
+//   let tabEleves = [];
+//   let tabNotes = [];
+//   let somme = 0;
+//   let max = tab[0].note;
+//   let min = tab[0].note;
+
+//   tab.map((eleve) => {
+//     tabEleves.push(eleve.prenom);
+//     tabNotes.push(eleve.note);
+//     somme += eleve.note;
+//     max = eleve.note > max ? eleve.note : max;
+//     min = eleve.note < min ? eleve.note : min;
+//   });
+
+//   let data = { max, min, moyenne: somme / tab.length };
+//   return data;
+// }
+
+// function meilleurs() {
+//   let tabMeilleurs = eleves.filter((eleve) => eleve.note === donnees.max);
+//   return tabMeilleurs;
+// }
+// function pires() {
+//   let tabPires = eleves.filter((eleve) => eleve.note === donnees.min);
+//   return tabPires;
+// }
+// let donnees = getData(eleves);
+
+//console.log(pires());
+//console.log(donnees);
+
+//            EXERCICE CORRECTION COLLECTIVE            //
+// 1- algo detaillé de l'etape 1
+// on va parcourir le tab  et on va chercher à extraire les données une fois pour toutes (au lieu de faire une boucle pour extraire chaque information dans une fonction à part)
+// let eleves = [
+//   {
+//     prenom: "Morgan",
+//     note: 5,
+//   },
+//   {
+//     prenom: "Rudy",
+//     note: 10,
+//   },
+//   {
+//     prenom: "Christophe",
+//     note: 11,
+//   },
+//   {
+//     prenom: "Yves",
+//     note: 17,
+//   },
+//   {
+//     prenom: "Manu",
+//     note: 2,
+//   },
+//   {
+//     prenom: "Gaétan",
+//     note: 20,
+//   },
+//   {
+//     prenom: "Quentin",
+//     note: 17,
+//   },
+//   {
+//     prenom: "Sullivan",
+//     note: 14,
+//   },
+//   {
+//     prenom: "Lucile",
+//     note: 16,
+//   },
+//   {
+//     prenom: "Steven",
+//     note: 7,
+//   },
+//   {
+//     prenom: "Alexandre",
+//     note: 8,
+//   },
+//   {
+//     prenom: "Corentin",
+//     note: 11,
+//   },
+//   {
+//     prenom: "Brandon",
+//     note: 15,
+//   },
+//   {
+//     prenom: "Rayan",
+//     note: 20,
+//   },
+//   {
+//     prenom: "Abdel",
+//     note: 9,
+//   },
+//   {
+//     prenom: "Nicolas",
+//     note: 11,
+//   },
+//   {
+//     prenom: "Julien",
+//     note: 12,
+//   },
+//   {
+//     prenom: "Thomas",
+//     note: 18,
+//   },
+//   {
+//     prenom: "Maxime",
+//     note: 16,
+//   },
+//   {
+//     prenom: "Jonathan",
+//     note: 13,
+//   },
+// ];
+
+// function getData(tab) {
+//   let tabEleves = [];
+//   let tabNotes = [];
+//   let somme = 0;
+//   let max = tab[0].note;
+//   let min = tab[0].note;
+
+//   tab.map((eleve) => {
+//     tabEleves.push(eleve.prenom);
+//     tabNotes.push(eleve.note);
+//     somme += eleve.note;
+//     max = eleve.note > max ? eleve.note : max;
+//     min = eleve.note < min ? eleve.note : min;
+//   });
+
+//   let data = { max, min, moyenne: somme / tab.length };
+//   return data;
+// }
+
+// function meilleurs() {
+//   let tabMeilleurs = eleves.filter((eleve) => eleve.note === donnees.max);
+//   return tabMeilleurs;
+// }
+// function pires() {
+//   let tabPires = eleves.filter((eleve) => eleve.note === donnees.min);
+//   return tabPires;
+// }
+// let donnees = getData(eleves);
+
+// //console.log(pires());
+// //console.log(donnees);
+
+// //    1.1 - calcul de la moyenne
+// //    somme des notes / taille du tableau (nb eleves)
+// //    1.2 - calcul de la note max
+// //    1.3 - calcul de la note min
+// function getData2(tab) {
+//   let somme = 0;
+//   let max = tab[0].note;
+//   let min = tab[0].note;
+
+//   tab.map((eleve) => {
+//     //somme = somme + eleve.note
+//     somme += eleve.note;
+//     // si la note actuelle est sup à l'ancienne valeur de max
+//     // max = Math.max(max, eleve.note);
+//     max = eleve.note > max ? eleve.note : max;
+//     min = eleve.note < min ? eleve.note : min;
+//   });
+
+//   let data = { max, min, moyenne: somme / tab.length };
+//   return data;
+// }
+// // NB : je ne peux pas determiner les noms des meilleurs et pires eleves dans la meme boucle si jamais les eleves ont la meme note (sinon les données vot etre ecrasées)
+// // ==> solution : les chercher dans deux fonctions differentes
+// //    1.4 - appeler la fonction getData2() en lui passant en param le tab eleves dans le but d'extraire les données
+// let donnees2 = getData2(eleves);
+// //    1.5 - chercher les noms des meilleurs et pires eleves dans des fonctions
+// function meilleurs2() {
+//   let tabMeilleurs = eleves.filter((eleve) => {
+//     return eleve.note === donnees2.max;
+//   });
+//   return tabMeilleurs;
+// }
+
+// function pires2() {
+//   let tabPires = eleves.filter((eleve) => {
+//     return eleve.note === donnees2.min;
+//   });
+//   return tabPires;
+// }
+
+//          SOLUTION FACTORISÉE          //
+// function getData2(tab) {
+//   let somme = 0;
+//   let max = tab[0].note;
+//   let min = tab[0].note;
+
+//   tab.map((eleve) => {
+//     //somme = somme + eleve.note
+//     somme += eleve.note;
+//     // si la note actuelle est sup à l'ancienne valeur de max
+//     // max = Math.max(max, eleve.note);
+//     max = eleve.note > max ? eleve.note : max;
+//     min = eleve.note < min ? eleve.note : min;
+//   });
+
+//   let tabMeilleurs = tab.filter((eleve) => {
+//     return eleve.note === max;
+//   });
+//   let tabPires = eleves.filter((eleve) => {
+//     return eleve.note === min;
+//   });
+
+//   let data = {
+//     //max : max  ==> nom de l'attribut est identique à celui de la var (qui contient la valeur)
+//     max,
+//     min,
+//     moyenne: somme / tab.length,
+//     nb: tab.length,
+//     tabMeilleurs,
+//     tabPires,
+//   };
+
+//   return data;
+// }
+
+// console.log(getData2(eleves));
+
+// let data = getData2(eleves);
+
+// document.write(`<table>
+// <tr>
+//   <th>Nb élèves</th>
+//   <th>Moyenne</th>
+//   <th>Nom(s) du (des) meilleur(s) élève(s)</th>
+//   <th>Note max</th>
+//   <th>Nom(s) du (des) pire(s) élève(s)</th>
+//   <th>Note min</th>
+// </tr>
+// <tr>
+//   <td>${data.nb}</td>
+//   <td>${data.moyenne}</td>
+//   <td>${data.tabMeilleurs.map((eleve) => {
+//     return " " + eleve.prenom;
+//   })}</td>
+//   <td>${data.max}</td>
+//   <td>${data.tabPires.map((eleve) => {
+//     return " " + eleve.prenom;
+//   })}</td>
+//   <td>${data.min}</td>
+// </tr>
+// </table>`);
+
+// const el = document.getElementsByName("email");
+// console.log(el)
+
+// const sectionContainer = document.querySelector("section.container");
+// console.log(sectionContainer);
+
+document.getElementsByTagName("ul")[1].innerHTML = "<li><a href='www.afpa.fr'>Lien</a></li>";
+document.querySelector(".container ul:nth-of-type(2)").innerHTML = `<li> <a href='#'>Lien</a> </li>`;
+document.querySelector(".parent").innerHTML = `<section>
+<p>
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil minus placeat eaque iure sint iusto? Accusamus nesciunt
+  corporis sequi fugit exercitationem omnis enim maiores ipsam! Saepe ducimus dolorum iure excepturi.
+</p>
+<p>
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis est aperiam iste distinctio. Consectetur magnam repellat
+  dignissimos ab pariatur eveniet placeat aliquid facere asperiores exercitationem? Inventore natus magnam iure libero?
+</p>
+</section>`;

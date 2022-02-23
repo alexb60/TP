@@ -312,3 +312,9 @@ return OBLIGATOIRE !
 - FONCTIONS DANS LES OBJETS -
 
 this.attribut	-> permet d'appeler l'attribut dans la fonction
+
+- DOM -
+
+.textContent	-> permet de récupérer la valeur textuelle d'un élément, s'il y a des enfants il ne récupère que le texte mais pas la partie HTML
+
+element.textContent = nouvelleValeur	//Modifie le contenu textuel par la valeur donnée, s'il y a une partie HTML elle sera écrasée
