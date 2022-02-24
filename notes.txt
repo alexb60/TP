@@ -380,3 +380,48 @@ $(selecteur).next().fonction();
 La fonction prev retourne le frère précédent d’un sélecteur
 $(selecteur).prev().fonction();
 
+La fonction first retourne la 1ere occurence d’un sélecteur
+$(selecteur).first().fonction();
+
+La fonction last retourne la dernière occurence d’un sélecteur
+$(selecteur).last().fonction();
+
+La fonction siblings retourne tous les frères d’un sélecteur
+$(selecteur).siblings().fonction();
+
+- Manipulation du DOM -
+
+La fonction text sans paramètre retourne la valeur textuel du sélecteur
+$(selecteur).text()
+Dans le cas où elle est utilisée avec un paramètre, la valeur du paramètre écrase l'ancienne valeur textuelle du sélecteur
+$(selecteur).text(parametre)
+
+La fonction html sans paramètre retourne le contenu HTML du sélecteur
+$(selecteur).html()
+Dans le cas où elle est utilisée avec un paramètre, la valeur du paramètre écrase l'ancien contenu HTML du sélecteur
+$(selecteur).html(parametre)
+
+-------------
+
+Accéder à la valeur d'un input :
+$(selecteur).val()
+
+-------------
+
+La fonction prepend ajoute du contenu au début du sélecteur (à l'intérieur et en premier lieu)
+$(selecteur).prepend(contenu);
+
+La fonction append ajoute du contenu à la fin du sélecteur (à l'intérieur et en dernier lieu)
+$(selecteur).append(contenu);
+
+La fonction before ajoute du contenu avant le sélecteur (à l'extérieur et avant)
+$(selecteur).before(contenu);
+
+La fonction after ajoute du contenu après le sélecteur (à l'extérieur et après)
+$(selecteur).after(contenu);
+
+La fonction remove supprime un élément du DOM
+$(selecteur).remove();
+
+La fonction attr retourne la valeur de l'attribut qu'on lui passe en paramètre
+$(selecteur).attr(attribut);
