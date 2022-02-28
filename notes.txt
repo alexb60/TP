@@ -425,3 +425,27 @@ $(selecteur).remove();
 
 La fonction attr retourne la valeur de l'attribut qu'on lui passe en paramètre
 $(selecteur).attr(attribut);
+Il est possible d'ajouter un attribut en le passant en paramètre
+$(selecteur).attr("attribut", "valeur");
+Dans le cas où l'on veut ajouter plusieurs attributs on peut utiliser un objet JSON (comme avec .css())
+$(selecteur).attr({attribut : "valeur", attribut2 : "valeur2"});
+NB : Si un attribut est déjà existant il sera écrasé par la nouvelle valeur
+
+-------------
+
+ATTRIBUTS DATA-
+
+Les attributs data- sont des attributs qui ne font pas partie de la spécification HTML 5, mais on se permet de les ajouter pour configurer (personnaliser les balises).
+
+<div class='div-data' data-role='user' data-info='{"nom":"HIDRI", "prenom":"Ryan"}' ></div>
+
+La fonction data avec le suffixe permet de lire la valeur de l'attribut data correspondant au suffixe
+$(selecteur).data("suffixe");
+On peut modifier la valeur d'un attribut data en passant en paramètre la nouvelle valeur en plus du suffixe
+$(selecteur).data("suffixe", "nvValeur");
+
+-------------
+
+EVENEMENTS
+
+$(selecteur).click ( function () {});

@@ -62,4 +62,4 @@
 
 // $(".supprimer").remove();
 
-console.log($(".dom input").attr("placeholder"));
+console.log($("p:first-of-type").attr("class"));
