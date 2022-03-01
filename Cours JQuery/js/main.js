@@ -62,4 +62,66 @@
 
 // $(".supprimer").remove();
 
-console.log($("p:first-of-type").attr("class"));
+// console.log($("p:first-of-type").attr("class"));
+
+// $(document).ready(function () {
+//   let notes = $(".div-eleve").data("info");
+//   console.log((notes.note1 + notes.note2) / 2);
+// });
+
+// $(".div-data").data("role", "admin");
+// console.log($(".div-data").data("role"));
+
+// // MODIFIER UN ATTRIBUT DATA OBJET JSON AVEC DATA
+// $(document).ready(function () {
+//   $(".div-data").data("info").prenom = "Ryan Junior";
+//   console.log($(".div-data").data("info"));
+// });
+
+// // MODIFIER UN ATTRIBUT DATA OBJET JSON DANS LE DOM
+
+// // $(".div-data").attr("data-info"); //  retourne la valeur {nom:"HIDRI", prenom:"Ryan"}
+// // mais le navigateur l'interprete comme etant une chaine de caractère
+// // d'ou la necessite de la convertir en objet json ==> le navigateur va la prendre comme un objet
+// objet = JSON.parse($(".div-data").attr("data-info"));
+// objet.prenom = "Ryan Junior";
+
+// // une fois que j'ai fait le changement, je le convertit en chaine de nouveau
+// $(".div-data").attr("data-info", JSON.stringify(objet)); // changer une velaur élementaire
+
+// // EXPLICATION PLUS DETAILLEE
+// let chaineJson = $(".div-data").attr("data-info"); // attr va le retourner en tant que chaine de caracteres
+// objet = JSON.parse(chaineJson);
+// objet.prenom = "Ryan Junior";
+// let chaineJson2 = JSON.stringify(objet); // convertit le json en chaine
+// $(".div-data").attr("data-info", chaineJson2);
+
+// $(".lien-supp").removeAttr("class");
+
+// $(".div-data").removeAttr("data-info");
+
+// $(document).ready(function () {
+//   if ($(".extensible").hasClass("premier-p")) {
+//     console.log("Le paragraphe a la classe premier-p.");
+//   } else {
+//     console.log("Le paragraphe n'a pas la classe premier-p");
+//   }
+// });
+
+// $(document).ready(function () {
+//   console.log(`Le paragraphe ${$(".extensible").hasClass("premier-p") ? "a" : "n'a pas"} la classe premier-p.`);
+// });
+
+// $(document).ready(function () {
+//   $("button").first().addClass("bouton1");
+
+//   $("button").removeClass("bouton1");
+// });
+
+// $("button").first().click(function () {
+//   $("p").toggleClass("para-rouge");
+// });
+
+$(".btn-style").click(function () {
+  $(".para-style").toggleClass("para-style-clique").text("para cliqué");
+});

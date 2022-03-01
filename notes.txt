@@ -444,8 +444,40 @@ $(selecteur).data("suffixe");
 On peut modifier la valeur d'un attribut data en passant en paramètre la nouvelle valeur en plus du suffixe
 $(selecteur).data("suffixe", "nvValeur");
 
+La fonction data change les données dans la mémoire mais dans le DOM. Pour recupérer les données data- au format JSON, la fonction data() est la plus adaptée puisqu'elle lit le format JSON directement (sans avoir recours à la conversion). Pour changer les valeur dans le DOM, il faut utiliser la fonction attr(), dans le cas du JSON, une conversion est nécessaire.
+
+JSON.parse("chaine")		-> chaîne vers JSON
+JSON.stringify("chaine")	-> JSON vers chaîne
+
+
 -------------
 
 EVENEMENTS
 
 $(selecteur).click ( function () {});
+
+-------------
+
+La fonction removeAttr permet de supprimer un attribut
+$(selecteur).removeAttr(attribut);
+
+La fonction hasClass permet de savoir si un élément possède une classe donnée
+$(selecteur).hasClass(classe);
+
+La fonction addClass ajoute une classe à un élément
+$(selecteur).addClass(classe);
+
+La fonction removeClass supprime la classe d'un élément
+$(selecteur).removeClass(classe);
+
+La fonction toggleClass alterne entre l'ajout et la suppression d'une classe
+$(selecteur).toggleClass(classe);
+
+-------------
+
+Dans le DOM chacun des éléments est objet
+
+-------------
+
+PARCOURS DES ELEMENTS DANS UN TABLEAU
+
