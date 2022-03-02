@@ -122,6 +122,74 @@
 //   $("p").toggleClass("para-rouge");
 // });
 
-$(".btn-style").click(function () {
-  $(".para-style").toggleClass("para-style-clique").text("para cliqué");
+// $(".btn-style").click(function () {
+//   $(".para-style").toggleClass("para-style-clique").text("para cliqué");
+// });
+
+// $(document).ready(function () {
+//   $(".liens-each a").each(function (index) {
+//     $(this).addClass("style-each");
+//     console.log(`index : ${index}`);
+//     console.log(`élément : ${$(this)}`);
+//   });
+// });
+
+// $(document).ready(function () {
+//   $(".bc-btn").click(function () {
+//     $("ul li").each(function (index) {
+//       $(this).addClass("bg-bc").text(`élément : li ${index}`);
+//     });
+//   });
+// });
+
+// $(document).ready(function () {
+//   $(".btn-dialogue").on("click", function () {
+//     console.log(prompt("Entrez votre nom"));
+//   });
+// });
+
+// // EXEMPLE AVEC 2 EVENEMENTS
+// $("ul").on("mouseenter mouseleave", function () {
+//   console.log("survolé ou quitté la ul");
+// });
+
+// // EXEMPLE AVEC UN OBJET JSON PASSE EN PARAMETRE
+// $("ul").on({
+//   mouseenter: function () {
+//     console.log("survolé  la ul");
+//   },
+//   mouseleave: function () {
+//     console.log(" quitté la ul");
+//   },
+// });
+
+// // EXECUTION UNIQUE D'UN EVENEMENT
+// $("ul").one("mouseenter", function () {
+//   console.log("message une seule fois");
+// });
+
+// // EMPECHEMENT DU COMPORTEMENT PAR DEFAUT
+// $(".no-link").click(function (e) {
+//   e.preventDefault();
+//   console.log("pas de redirection");
+// });
+
+// $("form").submit(function (e) {
+//   e.preventDefault();
+//   console.log("Formulaire non envoyé");
+// });
+
+// $(".trigger-btn").click(function () {
+//   console.log("avant");
+//   $(".trigger-link").trigger("click");
+//   console.log("apres");
+// });
+
+// $(".trigger-link").click(function (e) {
+//   console.log("lien cliqué");
+//   console.log(e.type);
+// });
+
+$(".trigger-btn").click(function () {
+  window.location.href = $(".trigger-link").attr("href");
 });

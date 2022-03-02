@@ -481,3 +481,51 @@ Dans le DOM chacun des éléments est objet
 
 PARCOURS DES ELEMENTS DANS UN TABLEAU
 
+La fonction each permet de parcourir un tableau et de lui passer une callback. La callback admet 2 paramètres, l'index et la valeur de l'élément
+$(selecteur).each(callback);
+
+-------------
+
+AFFICHER OU MASQUER DES ELEMENTS
+
+La fonction hide permet de cacher des éléments
+$(selecteur).hide();
+
+La fonction show permet d'afficher des éléments
+$(selecteur).show();
+
+La fonction toggle permet d'alterner entre l'affichage et le masquage d'un élément
+$(selecteur).toggle();
+
+
+-------------
+
+GESTION DES EVENEMENTS
+
+$(selecteur).evenement(callback);
+NB : Ces 3 fonctions peuvent admettre en paramètre la vitesse d'exécution en ms et une callback.
+
+Liste des évenements : https://www.w3schools.com/jquery/jquery_events.asp
+
+La methode on permet de rattacher à un seul élément, un ou plusieurs événements et une seule action, ou bien une action par événement.
+$(selecteur).on("evenement", callback);
+NB : on peut mettre plusieurs événements en les séparants par des espaces
+NB 2 : on peut passer un objet JSON en paramètre. Cet objet JSON contient le nom de l'événement et la fonction callback correspondante
+
+Exemple :
+$("ul").on(
+  {
+    mouseenter: function () {
+      console.log("survolé  la ul");
+    },
+    mouseleave: function () {
+      console.log(" quitté la ul");
+    },
+  }
+);
+
+
+La fonctione one permet d'exécuter un événement une seule fois
+$(selecteur).one("evenement", callback);
+
+Pour empêcher le comportement par défaut d'un événement, on associe à ce dernier la fonction preventDefault
