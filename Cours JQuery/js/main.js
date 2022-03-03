@@ -190,6 +190,36 @@
 //   console.log(e.type);
 // });
 
-$(".trigger-btn").click(function () {
-  window.location.href = $(".trigger-link").attr("href");
+// // MA REPONSE
+// $(".trigger-btn").click(function () {
+//   window.location.href = $(".trigger-link").attr("href");
+// });
+
+// CORRECTION
+// $(".trigger-btn").click(function () {
+//   $(".trigger-link").trigger("click");
+// });
+
+// $(".trigger-link").click(function (e) {
+//   //JS
+//   //location = $(".trigger-link").attr("href");  // meme onglet
+//   open($(".trigger-link").attr("hrefea")); // nouvel onglet
+//   //JQ
+//   //$(location).attr("href", $(".trigger-link").attr("href"));
+// });
+
+// $(".trigger-para").click(function () {
+//   $("p").addClass("trigger-para-style");
+// });
+
+// $(".trigger-para").click(function () {
+//   $(".change-style").trigger("click");
+// });
+// $(".change-style").click(function () {
+//   $("li").addClass("style-li");
+// });
+
+$(".maj-form-btn").click(function () {
+  $("#nom").val("Bertrand");
+  $("#prenom").val("Alexandre");
 });

@@ -529,3 +529,12 @@ La fonctione one permet d'exécuter un événement une seule fois
 $(selecteur).one("evenement", callback);
 
 Pour empêcher le comportement par défaut d'un événement, on associe à ce dernier la fonction preventDefault
+
+-------------
+
+FORMULAIRES
+
+La fonction val permet de récupérer la valeur d'un champ de formulaire
+$(selecteur).val();
+Si on lui passe un paramètre, la valeur sera mise à jour
+$(selecteur).val(nouvelleValeur);
