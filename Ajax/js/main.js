@@ -56,8 +56,7 @@ request.done(function (response) {
         </div>
         <div class="card-body">
             <h3>${user.name}</h3>
-             <p><i class="fas fa-map-marker-alt"></i> <a href="https://www.google.fr/maps/place/${user.address.geo.lng},${user.address.geo.lat}" target="_blank">${user.address.street}<br />${user.address.suite}<br />${
-      user.address.zipcode} ${user.address.city}
+             <p><i class="fas fa-map-marker-alt"></i> <a href="https://www.google.fr/maps/place/${user.address.geo.lng},${user.address.geo.lat}" target="_blank">${user.address.street}<br />${user.address.suite}<br />${user.address.zipcode} ${user.address.city}
             </a></p>
             <p><i class="fas fa-envelope"></i> <a href="mailto:${user.email}">${user.email}</a></p>
         </div>
