@@ -574,3 +574,23 @@ request.fail(function (http_error) {
     let code_label = http_error.statusText;
     alert("Erreur " + code + " (" + code_label + ") : " + server_msg);
 });
+
+---------
+
+Verbes HTTP
+
+GET : recevoir des données
+POST : création
+PATCH : modif d'un seul champ
+PUT : modif de tous les champs
+DELETE : suppression
+
+---------
+
+ÉVÉVENEMENTS
+
+Une des problématiques qui se pose lors de l'utilisation d'AJAX, c'est la gestion des événements sur des éléments qui n'existent pas lors du chargement du document
+Ils vont exister plus tard
+==> Solution : mettre un écouteur d'événements sur tout le document, dès que l'élément va être créé, il va lui rattacher le gestionnaire d'événements
+$(document).on("evenement", "selecteur",   callback );
+
