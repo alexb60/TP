@@ -594,3 +594,10 @@ Ils vont exister plus tard
 ==> Solution : mettre un écouteur d'événements sur tout le document, dès que l'élément va être créé, il va lui rattacher le gestionnaire d'événements
 $(document).on("evenement", "selecteur",   callback );
 
+---------
+
+DEMARRER JSON SERVER
+
+> Ouvrir une invite de commande et se placer dans le dossier du fichier json
+> Taper la commande : json-server --watch fichier.json
+> Ne pas fermer la fenêtre
