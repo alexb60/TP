@@ -55,10 +55,48 @@
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 p-md-5">
           <section class="dashboard">
-            <div class="card card-nbContact">
-              <div class="card-body">
-                <h6 class="card-subtitle text-muted">Nombre de contacts</h6>
-                <p class="nbContact text-right" id="#nbContact"></p>
+            <h1>Tableau de bord</h1>
+            <br />
+            <div class="row">
+              <div class="col-md-8">
+                <div class="row">
+                  <div class="col mb-4">
+                    <div class="card card-nbContact">
+                      <div class="card-body">
+                        <h6 class="card-subtitle text-muted">Nombre de contacts</h6>
+                        <p class="nbContact text-right" id="#nbContact"></p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col mb-4">
+                    <div class="card card-nbCategorie">
+                      <div class="card-body">
+                        <h6 class="card-subtitle text-muted">Nombre de catégories</h6>
+                        <p class="nbCategorie text-right" id="#nbCategories"></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="card card-chart">
+                      <div class="card-body">
+                        <h6 class="card-subtitle text-muted">Répartition des catégories</h6>
+                      </div>
+                      <canvas id="chartCategorie"></canvas>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card card-detailsCategories">
+                  <div class="card-body">
+                    <h6 class="card-subtitle text-muted">Catégories</h6>
+                  </div>
+                  <ul class="list-group list-group-flush border-0">
+                    <li class="list-group-item liste-cat"></li>
+                  </ul>
+                </div>
               </div>
             </div>
           </section>
@@ -68,11 +106,11 @@
             <form action="#" method="post">
               <div class="form-group">
                 <label for="nom">Nom :</label>
-                <input type="text" class="form-control" name="nom" id="nom" />
+                <input type="text" class="form-control" name="nom" id="nom" required />
               </div>
               <div class="form-group">
                 <label for="prenom">Prénom :</label>
-                <input type="text" class="form-control" name="prenom" id="prenom" />
+                <input type="text" class="form-control" name="prenom" id="prenom" required />
               </div>
               <div class="form-group">
                 <label for="mail">Adresse mail :</label>
@@ -102,12 +140,7 @@
               </div>
               <div class="form-group">
                 <label for="categorie">Catégorie</label>
-                <select name="categorie" id="categorie" class="form-control">
-                  <option value="Famille" selected>Famille</option>
-                  <option value="Amis">Amis</option>
-                  <option value="Travail">Travail</option>
-                  <option value="Autre">Autre</option>
-                </select>
+                <input type="text" class="form-control" name="categorie" id="categorie" required />
               </div>
               <button type="submit" class="btn btn-primary ajout-contact">Ajouter</button>
             </form>
@@ -118,11 +151,11 @@
             <form>
               <div class="form-group">
                 <label for="nom">Nom :</label>
-                <input type="text" class="form-control" name="nom" id="nom" />
+                <input type="text" class="form-control" name="nom" id="nom" required />
               </div>
               <div class="form-group">
                 <label for="prenom">Prénom :</label>
-                <input type="text" class="form-control" name="prenom" id="prenom" />
+                <input type="text" class="form-control" name="prenom" id="prenom" required />
               </div>
               <div class="form-group">
                 <label for="mail">Adresse mail :</label>
@@ -152,12 +185,7 @@
               </div>
               <div class="form-group">
                 <label for="categorie">Catégorie</label>
-                <select name="categorie" id="categorie" class="form-control">
-                  <option value="Famille" selected>Famille</option>
-                  <option value="Amis">Amis</option>
-                  <option value="Travail">Travail</option>
-                  <option value="Autre">Autre</option>
-                </select>
+                <input type="text" class="form-control" name="categorie" id="categorie" required />
               </div>
               <button type="submit" class="btn btn-info maj-contact" id="">Modifier</button>
               <button type="reset" class="btn btn-danger">Réinitialiser</button>
@@ -170,10 +198,7 @@
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/font-awesome.all.min.js"></script>
+    <script src="js/Chart.js"></script>
     <script src="js/main.js"></script>
   </body>
 </html>
-
-<!-- RAJOUTER : ADRESSE, EMAIL, TEL, CATEGORIE(FAMILLE, AMIS, TRAVAIL, AUTRES) => NE PAS AFFICHER DANS LE TABLEAU,
-        FAIRE UN BOUTON "VOIR" POUR LES AFFICHER
-     RETIRER : ID -->

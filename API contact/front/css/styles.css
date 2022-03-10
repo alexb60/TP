@@ -96,10 +96,17 @@ body {
   box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.25);
 }
 
-.card-nbContact {
-  width: 18rem;
+.nbContact,
+.nbCategorie {
+  font-size: 4.5rem;
 }
 
-.nbContact {
-  font-size: 4.5rem;
+canvas {
+  width: 100%;
+  max-width: 700px;
+  
+}
+
+.card-chart {
+  width: auto;
 }

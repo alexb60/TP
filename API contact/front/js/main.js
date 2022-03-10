@@ -1,7 +1,11 @@
+// ACTIONS LORS DU PREMIER CHARGEMENT DE LA PAGE
 $("section").hide();
-$(".dashboard").show();
 nbContact();
+let tab = new Set();
+tab = categories(tab);
+$(".dashboard").show();
 
+// AFFICHE LA LISTE DES CONTACTS APRES CLIC SUR "LISTE DES CONTACTS"
 $(document).on("click", "#liste-contacts", function (e) {
   e.preventDefault();
   $("section").hide();
@@ -9,23 +13,27 @@ $(document).on("click", "#liste-contacts", function (e) {
   liste();
 });
 
+// AFFICHE LE FORMULAIRE D'AJOUT DE CONTACT APRES CLIC SUR "NOUVEAU CONTACT"
 $(document).on("click", "#nv-contact", function (e) {
   e.preventDefault();
   $("section").hide();
   $(".ajout-contact").show();
 });
 
+// AJOUTE LE NOUVEAU CONTACT
 $(document).on("submit", ".ajout-contact form", function (e) {
   e.preventDefault();
   ajoutContact();
 });
 
+// AFFICHE LE FORMULAIRE DE MODIFICATION D'UN CONTACT APRES CLIC SUR LE BOUTON "MODIFIER"
 $(document).on("click", "button.modif-contact", function () {
   $("section").hide();
   $("section.modif-contact").show();
   modifContact($(this).attr("id"));
 });
 
+// MET A JOUR LE CONTACT
 $(document).on("submit", ".modif-contact form", function (e) {
   e.preventDefault();
   majContact($(".modif-contact .maj-contact").attr("id"));
@@ -33,17 +41,22 @@ $(document).on("submit", ".modif-contact form", function (e) {
   $(".liste").show();
 });
 
+// SUPPRIME LE CONTACT APRES CLIC SUR LE BOUTON "SUPPRIMER"
 $(document).on("click", ".supp-contact", function () {
   suppContact($(this).attr("id"));
 });
 
+// AFFICHE LE TABLEAU DE BORD APRS CLIC SUR "TABLEAU DE BORD"
 $(document).on("click", "#dashboard", function (e) {
   e.preventDefault();
   $("section").hide();
   nbContact();
+  let tab = new Set();
+  tab = categories(tab);
   $(".dashboard").show();
 });
 
+// AFFICHER LE NOMBRE DE CONTACT SUR LE TABLEAU DE BORD
 function nbContact() {
   let request = $.ajax({
     type: "GET",
@@ -63,6 +76,7 @@ function nbContact() {
   });
 }
 
+// GENERER LA LISTE DES CONTACTS
 function liste() {
   let request = $.ajax({
     type: "GET",
@@ -73,25 +87,28 @@ function liste() {
   request.done(function (response) {
     let html = "";
     if (response.length !== 0) {
+      // Si l'objet JSON n'est pas vide...
+      // Tête du tableau des contacts
       html = `
           <h1>Liste des contacts</h1>
           <table class="table table-striped tab-contact" id="myTable">
             <thead>
                 <tr>
-                    <th scope="col">#ID</th>
-                    <th scope="col">Nom &nbsp;&nbsp;<button class="badge btn-outline-secondary btn-trier">Trier</button></th>
+                    <th scope="col">Nom</th>
                     <th scope="col">Prénom</th>
-                    <th scope="col">Plus d'infos</th>
+                    <th scope="col">Catégorie</th>
+                    <th scope="col"></th>
                     <th scope="col">Actions</th>
                 </tr>
             </thead>
             <tbody>`;
+      // Parcours des objets et génération du HTML pour chaque objet
       response.map((contact) => {
         html += `
             <tr>
-              <th scope="row">${contact.id}</th>
               <td>${contact.nom}</td>
               <td>${contact.prenom}</td>
+              <td class="font-italic">${contact.categorie}</td>
               <td>
                   <!-- Button trigger modal -->
                   <a type="button" data-toggle="modal" data-target="#contact-modal-${contact.id}"><i class="fas fa-eye"></i> Voir plus</a>
@@ -113,10 +130,11 @@ function liste() {
                             <span class="font-weight-bold">Adresse :</span><br />
                             ${contact.rue}<br />
                             ${contact.appt}<br />
-                            ${contact.codePostal} ${contact.ville}
+                            ${contact.codePostal} ${contact.ville}<br /><br />
+                            <a href="https://google.fr/maps/place/${contact.rue}+${contact.codePostal}+${contact.ville}" target="_blank">Visualiser l'adresse sur une carte <i class="fas fa-external-link-alt"></i></a>
                           </p>
-                          <p><span class="font-weight-bold">Email :</span><br />${contact.email}</p>
-                          <p><span class="font-weight-bold">Téléphone :</span><br />${contact.tel}</p>
+                          <p><span class="font-weight-bold">Email :</span><br /><a href="mailto:${contact.email}">${contact.email}</a></p>
+                          <p><span class="font-weight-bold">Téléphone :</span><br /><a href="telto:${contact.tel}">${contact.tel}</a></p>
                           <p><span class="font-weight-bold">Catégorie :</span><br />${contact.categorie}</p>
                         </div>
                         <div class="modal-footer">
@@ -138,14 +156,16 @@ function liste() {
         `;
       });
 
+      // Fin du tableau
       html += `    </tbody>
                     </table>`;
     } else {
+      // Sinon message d'alerte
       html = `<div class="alert alert-danger" role="alert">
       <i class="fas fa-exclamation-triangle"></i> &nbsp;Aucun contact ne figure dans la liste !
         </div>`;
     }
-    $(".liste").html(html);
+    $(".liste").html(html); // Afficher le tout sur la page
   });
 
   request.fail(function (http_error) {
@@ -156,6 +176,7 @@ function liste() {
   });
 }
 
+// AJOUTER UN CONTACT
 function ajoutContact() {
   let request = $.ajax({
     type: "POST",
@@ -187,6 +208,7 @@ function ajoutContact() {
   });
 }
 
+// RECUPERER LES INFORMATIONS D'UN CONTACT POUR LES AFFICHER DANS LE FORMULAIRE DE MODIFICATION
 function modifContact(id) {
   let request = $.ajax({
     type: "GET",
@@ -203,6 +225,7 @@ function modifContact(id) {
     $(".modif-contact #appt").val(response.appt);
     $(".modif-contact #codePostal").val(response.codePostal);
     $(".modif-contact #ville").val(response.ville);
+    $(".modif-contact #categorie").val(response.categorie);
     $(".maj-contact").attr("id", response.id);
   });
 
@@ -214,6 +237,7 @@ function modifContact(id) {
   });
 }
 
+// METTRE A JOUR UN CONTACT
 function majContact(id) {
   let request = $.ajax({
     type: "PUT",
@@ -244,6 +268,7 @@ function majContact(id) {
   });
 }
 
+// SUPPRIMER UN CONTACT
 function suppContact(id) {
   let request = $.ajax({
     type: "DELETE",
@@ -263,24 +288,87 @@ function suppContact(id) {
   });
 }
 
-function compterCategorie() {
+// AFFICHAGE DES DIFFERENTES FONCTIONNALITES CONCERNANT LES CATEGORIES SUR LE TABLEAU DE BORD
+function categories(tabSet) {
   let request = $.ajax({
     type: "GET",
-    url: `http://localhost:3000/contacts/${id}`,
+    url: `http://localhost:3000/contacts`,
     dataType: "json",
   });
 
   request.done(function (response) {
+    let html = "";
+
+    // RECUPERATION DU NOM DES DIFFERENTES CATEGORIES DE MANIERE UNIQUE
+    response.map(function (caseResponse) {
+      tabSet.add(caseResponse.categorie);
+    });
+    $(".nbCategorie").html(tabSet.size);
+
+    // AFFICHAGE LISTE DES CATEGORIES
+    if (tabSet.size !== 0) {  // S'il y a des catégories...
+      for (const element of tabSet) {
+        html += `<button class="btn btn-info btn-block">
+        ${element} <span class="badge badge-light" id="categorie${element}"></span>
+      </button>`;
+      }
+    } else { // Sinon afficher message d'alerte
+      html = `<div class="alert alert-danger" role="alert">
+        <i class="fas fa-exclamation-triangle"></i> &nbsp;Aucune catégorie ne figure dans la liste !
+          </div>`;
+    }
+    $(".liste-cat").html(html);
+
+    // AFFICHAGE NOMBRE D'OCCURENCES DES CATEGORIES
     let numOccurences = 0;
-    let search = "new wave"; // ce que l'on cherche
-
-  
-    $(document).ready(function () {
-      numOccurences = $.grep(locs, function (pdt) {
-        return pdt.famille === search;
+    for (const caseSearch of tabSet) {
+      numOccurences = $.grep(response, function (caseResponse) {
+        return caseResponse.categorie === caseSearch;
       }).length;
+      $(`#categorie${caseSearch}`).html(numOccurences);
+    }
 
-      console.log("Nombre d'occurences de " + search + " = " + numOccurences);
+    // DIAGRAMME CATEGORIE
+    // RECUPERATION DES DONNEES
+    let xValues = [];
+    let yValues = [];
+    for (const element of tabSet) {
+      xValues.push(element); // Récupère le nom des catégories pour les mettre dans un tableau pour le graphique
+      yValues.push(parseInt($(`#categorie${element}`).text())); // Récupère le nombre d'occurences des catégories
+    }
+    console.log(xValues);
+    console.log(yValues);
+
+    // COULEURS
+    let barColors = [
+      "#007bff",
+      "#28a745",
+      "#c82333",
+      "#ffc107",
+      "#000000",
+      "#ff9200",
+      "#81cf00",
+      "#aaaaaaa",
+      "#00ffff",
+      "#ff7ab1",
+      "#990066",
+      "#ff0092",
+      "#b06b00",
+      "#000080",
+    ];
+
+    //GENERER LE DIAGRAMME
+    new Chart("chartCategorie", {
+      type: "doughnut",
+      data: {
+        labels: xValues,
+        datasets: [
+          {
+            backgroundColor: barColors,
+            data: yValues,
+          },
+        ],
+      },
     });
   });
 
@@ -292,13 +380,14 @@ function compterCategorie() {
   });
 }
 
-/* ALGO CATEGORIE
-- RECHERCHER TOUTES LES CATEGORIES ET LES METTRE DANS UN TABLEAU
-- PARCOURIR LE TABLEAU ET COMPTER LE NOMBRE D'OCCURENCES
- */
+// ALGO CATEGORIE
+// - RECHERCHER TOUTES LES CATEGORIES ET LES METTRE DANS UN TABLEAU
+// - PARCOURIR LE TABLEAU ET COMPTER LE NOMBRE D'OCCURENCES
+//
 
-// OBJET D'ORIGINE :
 /*
+OBJET D'ORIGINE :
+
 {
   "contacts": [
     {
