@@ -9,6 +9,8 @@ $(".dashboard").show();
 $(document).on("click", "#liste-contacts", function (e) {
   e.preventDefault();
   $("section").hide();
+  $("a.nav-link").removeClass("active");
+  $("#liste-contacts").addClass("active");
   $(".liste").show();
   liste();
 });
@@ -17,6 +19,8 @@ $(document).on("click", "#liste-contacts", function (e) {
 $(document).on("click", "#nv-contact", function (e) {
   e.preventDefault();
   $("section").hide();
+  $("a.nav-link").removeClass("active");
+  $("#nv-contact").addClass("active");
   $(".ajout-contact").show();
 });
 
@@ -51,6 +55,8 @@ $(document).on("click", "#dashboard", function (e) {
   e.preventDefault();
   $("section").hide();
   nbContact();
+  $("a.nav-link").removeClass("active");
+  $("#dashboard").addClass("active");
   let tab = new Set();
   tab = categories(tab);
   $(".dashboard").show();
@@ -306,13 +312,15 @@ function categories(tabSet) {
     $(".nbCategorie").html(tabSet.size);
 
     // AFFICHAGE LISTE DES CATEGORIES
-    if (tabSet.size !== 0) {  // S'il y a des catégories...
+    if (tabSet.size !== 0) {
+      // S'il y a des catégories...
       for (const element of tabSet) {
         html += `<button class="btn btn-info btn-block">
         ${element} <span class="badge badge-light" id="categorie${element}"></span>
       </button>`;
       }
-    } else { // Sinon afficher message d'alerte
+    } else {
+      // Sinon afficher message d'alerte
       html = `<div class="alert alert-danger" role="alert">
         <i class="fas fa-exclamation-triangle"></i> &nbsp;Aucune catégorie ne figure dans la liste !
           </div>`;
@@ -334,12 +342,10 @@ function categories(tabSet) {
     let yValues = [];
     for (const element of tabSet) {
       xValues.push(element); // Récupère le nom des catégories pour les mettre dans un tableau pour le graphique
-      yValues.push(parseInt($(`#categorie${element}`).text())); // Récupère le nombre d'occurences des catégories
+      yValues.push(parseInt($(`#categorie${element}`).text())); // Récupère le nombre d'occurences des catégories pour le graphique
     }
-    console.log(xValues);
-    console.log(yValues);
 
-    // COULEURS
+    // COULEURS DU GRAPHIQUE
     let barColors = [
       "#007bff",
       "#28a745",
@@ -348,13 +354,15 @@ function categories(tabSet) {
       "#000000",
       "#ff9200",
       "#81cf00",
-      "#aaaaaaa",
+      "#aaaaaa",
       "#00ffff",
       "#ff7ab1",
       "#990066",
       "#ff0092",
       "#b06b00",
       "#000080",
+      "#42bec0",
+      "#ffff00",
     ];
 
     //GENERER LE DIAGRAMME
