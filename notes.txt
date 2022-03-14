@@ -601,3 +601,9 @@ DEMARRER JSON SERVER
 > Ouvrir une invite de commande et se placer dans le dossier du fichier json
 > Taper la commande : json-server --watch fichier.json
 > Ne pas fermer la fenêtre
+
+---------
+
+JQUERY - Compter le nombre d'occurences dans un objet JSON
+
+https://blog.rdmedias.com/jquery-json-compte-nombre-doccurrences/

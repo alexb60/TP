@@ -50,7 +50,7 @@ $(document).on("click", ".supp-contact", function () {
   suppContact($(this).attr("id"));
 });
 
-// AFFICHE LE TABLEAU DE BORD APRS CLIC SUR "TABLEAU DE BORD"
+// AFFICHE LE TABLEAU DE BORD APRES CLIC SUR "TABLEAU DE BORD"
 $(document).on("click", "#dashboard", function (e) {
   e.preventDefault();
   $("section").hide();
@@ -61,26 +61,6 @@ $(document).on("click", "#dashboard", function (e) {
   tab = categories(tab);
   $(".dashboard").show();
 });
-
-// AFFICHER LE NOMBRE DE CONTACT SUR LE TABLEAU DE BORD
-function nbContact() {
-  let request = $.ajax({
-    type: "GET",
-    url: "http://localhost:3000/contacts",
-    dataType: "json",
-  });
-
-  request.done(function (response) {
-    $(".nbContact").html(`${response.length}`);
-  });
-
-  request.fail(function (http_error) {
-    let server_msg = http_error.responseText;
-    let code = http_error.status;
-    let code_label = http_error.statusText;
-    alert("Erreur " + code + " (" + code_label + ") : " + server_msg);
-  });
-}
 
 // GENERER LA LISTE DES CONTACTS
 function liste() {
@@ -294,6 +274,26 @@ function suppContact(id) {
   });
 }
 
+// AFFICHER LE NOMBRE DE CONTACT SUR LE TABLEAU DE BORD
+function nbContact() {
+  let request = $.ajax({
+    type: "GET",
+    url: "http://localhost:3000/contacts",
+    dataType: "json",
+  });
+
+  request.done(function (response) {
+    $(".nbContact").html(`${response.length}`);
+  });
+
+  request.fail(function (http_error) {
+    let server_msg = http_error.responseText;
+    let code = http_error.status;
+    let code_label = http_error.statusText;
+    alert("Erreur " + code + " (" + code_label + ") : " + server_msg);
+  });
+}
+
 // AFFICHAGE DES DIFFERENTES FONCTIONNALITES CONCERNANT LES CATEGORIES SUR LE TABLEAU DE BORD
 function categories(tabSet) {
   let request = $.ajax({
@@ -315,7 +315,7 @@ function categories(tabSet) {
     if (tabSet.size !== 0) {
       // S'il y a des catégories...
       for (const element of tabSet) {
-        html += `<button class="btn btn-info btn-block">
+        html += `<button class="btn btn-info btn-block" id="bouton${element}">
         ${element} <span class="badge badge-light" id="categorie${element}"></span>
       </button>`;
       }
@@ -331,8 +331,10 @@ function categories(tabSet) {
     let numOccurences = 0;
     for (const caseSearch of tabSet) {
       numOccurences = $.grep(response, function (caseResponse) {
-        return caseResponse.categorie === caseSearch;
-      }).length;
+        //grep(objet JSON, fonction(case actuelle de l'objet))
+        return caseResponse.categorie === caseSearch; // retourne la catégorie de la case actuelle de l'objet si elle correspond à la condition de filtrage
+      }).length; // la longueur du tableau généré par grep
+      // numOccurences = longueur du tableau généré par grep après parcours de l'objet JSON
       $(`#categorie${caseSearch}`).html(numOccurences);
     }
 
@@ -351,13 +353,13 @@ function categories(tabSet) {
       "#28a745",
       "#c82333",
       "#ffc107",
-      "#000000",
       "#ff9200",
       "#81cf00",
       "#aaaaaa",
       "#00ffff",
       "#ff7ab1",
       "#990066",
+      "#000000",
       "#ff0092",
       "#b06b00",
       "#000080",
