@@ -33,7 +33,7 @@ header {
 }
 
 .top h1 {
-  color:  white;
+  color: white;
 }
 
 .contact {
@@ -259,6 +259,80 @@ article:nth-of-type(3) h2 {
 .conteneur .services-elem p {
   font-size: 1.2rem;
   color: #444444;
+}
+
+.temoignages {
+  padding-top: 123px;
+  background: blue;
+}
+
+.temoignage {
+  width: 30%;
+  padding: 1%;
+  background: white;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+}
+
+.temoignages .conteneur p,
+.temoignages .conteneur h2 {
+  display: block;
+}
+.temoignages .conteneur h2 + div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.temoignage svg {
+  color: blue;
+  /* faire une rotation de l'icone */
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  font-size: 4rem;
+}
+
+.temoignage p {
+  line-height: 1.8rem;
+}
+
+.user img {
+  margin-right: 10px;
+  border-radius: 50%;
+}
+
+.user span::first-line {
+  font-weight: bold;
+}
+
+.user span::last-line {
+  font-size: 0.8rem;
+}
+
+.temoignages .categorie,
+.temoignages h2 {
+  text-align: center;
+  font-size: 1.2rem;
+  color: white;
+  padding: 0;
+  margin: 0;
+}
+.temoignages h2 {
+  margin: 20px 0 66px 0;
+  font-size: 3rem;
+}
+
+.clients {
+  display: flex;
+  justify-content: space-between;
+  margin: 116px 0;
+}
+
+.clients img {
+  width: 25%;
+  height: 165px;
 }
 
 footer {
