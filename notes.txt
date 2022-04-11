@@ -607,3 +607,11 @@ DEMARRER JSON SERVER
 JQUERY - Compter le nombre d'occurences dans un objet JSON
 
 https://blog.rdmedias.com/jquery-json-compte-nombre-doccurrences/
+
+====================================
+
+SQL
+
+La commande EXCEPT / MINUS (MINUS dans MySQL) :
+Il s’agit de faire deux requetes de selection sur deux ensembles, on prend le résultat du premier sans inclure le résultat du 2eme.
+Admettons qu’on a deux tables clients et clients_echeance (clients qui ont dépassé l’échéance). On veut chercher les clients qui n’ont pas dépassé l’échéance.
