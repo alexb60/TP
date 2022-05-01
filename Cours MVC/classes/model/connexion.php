@@ -5,15 +5,14 @@ function connexion()
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $dbname= "contacts";
+    $dbname = "contacts";
 
     try {
-$idcon = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8", $username, $password);
+        $idcon = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8", $username, $password);
         return $idcon;
     } catch (PDOException $e) {
         echo "Connection failed: " . $e->getMessage();
         return FALSE;
         exit();
     }
-    
 }
