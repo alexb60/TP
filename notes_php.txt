@@ -1,0 +1,712 @@
+PHP
+
+-- Syntaxe --
+
+<?php
+//code
+?>
+
+-- Variables --
+
+Une variable en PHP débute par $
+
+Exemple :
+
+	$txt = "Hello";
+	$monde = "World";
+	echo $txt . " " . $monde;
+
+echo permet d'afficher
+
+NB : Pour la concaténation, on utilise le caractère point (.)
+NB2 : La fonction var_dump(variable) permet d'afficher le contenu d'une variable pour le débuggage
+
+-- Constantes --
+
+En dehors d'une classe, les constantes sont définies comme suit :
+	define("NOM", valeur);
+
+NB : par convention, les noms des constantes sont toujours en majuscules
+
+Exemple :
+	define("VILLE", "Calais");
+
+	$departement = "Pas-de-calais";
+	define("DEPARTEMENT", $departement);
+
+	echo  VILLE." -- ". DEPARTEMENT."<br/>";
+
+-- Commentaires --
+
+// une seule ligne
+
+# une seule ligne
+
+/*
+Un bloc
+de
+plusieurs lignes
+*/
+
+-- Types de données --
+
+Les différents types de données gérés par PHP :
+- String
+- Integer
+- Float 
+- Boolean
+- Array
+- Object
+- NULL
+- Resource
+
+-- Chaînes de caractères --
+
+strlen(chaine)					-> retourne la longueur de la chaîne
+str_word_count(chaine)				-> retourne le nombre de mots d'une chaîne
+strrev(chaine)					-> retourne la chaîne donnée à l'envers
+strpos(chaine, morceau)				-> retourne la position du 1er caractère du morceau donné, s'il ne le trouve pas retourne FALSE
+str_replace(remplacé, remplaçant, chaine)	-> remplace une partie d'une chaîne donnée par une autre également donnée
+
+-- Tableaux --
+
+$variable = array("donnée1", "donnée2", "donnée3")
+
+Tableau associatif :
+
+$age = array("Peter"=>"35", "Ben"=>"37", "Joe"=>"43");
+
+Accès à la case : $age['Peter'];
+
+Tableau multidimensionnel :
+
+$cars = array(
+      array("Volvo", 22, 18),
+      array("BMW", 15, 13),
+      array("Saab", 5, 2),
+      array("Land Rover", 17, 15)
+);
+
+Accès à la case : $cars[1][2]; // renvoie 13
+
+-- Dates et heures --
+
+PHP propose des fonctions qui permettent de gérer les dates.
+date(format,timestamp) : cette fonction permet de créer une date formatée en fonction du paramètre format (obligatoire) et du param timestamp (optionnel).
+En absence du param timestamp, la fonction date retourna la date et l’heure actuelle (celle du serveur qui peut etre différente de celle du client).
+Les formats de date :
+•    d - Représente le jour du mois (01 à 31)
+•    m - Représente un mois (01 à 12)
+•    Y - Représente une année (en quatre chiffres)
+•    l (minuscule 'L') - Représente le jour de la semaine
+•    H - Format 24 heures d'une heure (00 à 23)
+•    h - format 12 heures d'une heure avec des zéros non significatifs (01 à 12)
+•    i - Minutes avec des zéros non significatifs (00 à 59)
+•    s - Secondes avec des zéros non significatifs (00 à 59)
+•    a - Minuscule Ante meridiem et Post meridiem (am ou pm)
+
+echo "Aujourd'hui, on est le " . date("Y-m-d h:i:s") . "<br>";
+
+mktime(hour, minute, second, month, day, year) : permet de definir un timestamp en fonction des param de date et heure qui lui sont passés.
+
+On peut chercher le timestamp d’une date donnée sans passer par la date elle-même strtotime(time, now);
+echo (strtotime("+1 week") . "<br>");
+
+Autres exemples :
+https://www.w3schools.com/php/func_date_strtotime.asp
+on peut ajuster l’horaire de l’application en fonction du fuseau horaire de l’utilisateur en utilisant date_default_timezone_set('continent/ville') :
+
+liste des fuseaux horaires :
+https://www.php.net/manual/fr/timezones.php
+
+liste complete des fonctions de date et heure
+https://www.w3schools.com/php/php_ref_date.asp
+
+-- Superglobals --
+
+Les variables superglobales PHP sont :
+•    $GLOBALS
+•    $_SERVER
+•    $_REQUEST
+•    $_POST
+•    $_GET
+•    $_FILES
+•    $_ENV
+•    $_COOKIE
+•    $_SESSION
+
+Les paramètres GET sont envoyés dans l’URL et sont transmises en clair
+http://localhost/calais/cours.php?nom=HIDRI&prenom=ryan
+
+Alors que les paramètres POST sont envoyés séparément et non visibles dans l’URL.
+NB : si on passe par un formulaire, la methode POST est la plus recommandée, il faut la mettre explicitement dans l’attribut action de la balise form (si on ne met rien, par défaut c’est GET)
+
+Exemple de code de transmission de données via un formulaire :
+
+	<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+	  Nom: <input type="text" name="nom"> <br><br>
+	  prenom: <input type="text" name="prenom">
+	  <input type="submit">
+	</form>
+
+	<?php
+	echo $_SERVER["REQUEST_METHOD"] . "  --  ";
+
+	if ($_SERVER["REQUEST_METHOD"] == "POST") {
+	  // collect value of input field
+	  echo $_POST['prenom'] . " " . $_POST['nom'];
+	}
+	?>
+
+-- Cookies --
+
+https://www.w3schools.com/php/php_cookies.asp
+pour créer un cookie, on utilise setcookie("nom","valeur", durée, "chemin_de_visibilité" ) et une fois pour toutes
+
+Exemple :
+	setcookie("theme", "vert", time() + (86400 * 365), "/"); // crée un cookie qui est visible sur tt le site (/) pendant un an
+
+une fois le cookie créé, il sera visible dans tous les scripts du chemin et pendant la période qui ont été spécifiés lors de la création
+
+	// tester l'existance du cookie (on utilise la fonction isset)
+	if (isset($_COOKIE['theme'])) {
+	  echo $_COOKIE['theme'];
+	} else {
+	  echo "cookie inexistant";
+	}
+
+Pour modifier un cookie, on utilise la meme fonction que la création engardant le meme nom lui introduisant de nouvelles valeurs.
+	setcookie("theme", "bleu", time() + (86400 * 365), "/");
+
+Pour supprimer un cookie, il suffit d’utiliser la fonction unset(nom_du_cookie)
+	unset($_COOKIE['theme']);
+
+-- Sessions --
+
+pour démarrer une session, on utilise
+session_start(); 
+
+!!!!!!!!!!!!!!!!!!!!!!!!
+NB : La fonction  session_start( )doit être la toute première chose dans votre document. Avant toute balise HTML. Elle doit être présente dans tous les fichiers.
+
+	// creation de var de session mail
+	$_SESSION["mail"] = "ryan@gmail.com";
+
+	// modif de var de session
+	$_SESSION["mail"] = "admin@gmail.com"; 
+
+	//tester  l’existance d’une var de session
+	if( isset($_SESSION ['mail'])) {
+	  echo $_SESSION["mail"];
+	}
+
+Vider la session de toutes ses var
+	session_unset(); 
+détruire la session
+	session_destroy(); 
+
+-- Opérateurs --
+
+https://www.w3schools.com/php/php_operators.asp
+
+-- Boucles --
+
+- foreach -
+Elle boucle obligatoirement sur un tableau
+Elle parcoure tous les éléments du tableau dans l’ordre, et pour chacun, elle effectue son traitement.
+
+Syntaxe : tab indexé
+	foreach ($tab as $element) {
+	  // trt
+	} 
+Exemple :
+	$couleurs = ["rouge", "vert", "bleu", "jaune"];
+
+	foreach ($couleurs as $couleur) {
+	  echo "$couleur <br>";
+	} 
+
+Syntaxe : tab associatif
+	foreach ($tab as $cle => $valeur) {
+	  // trt
+	} 
+Exemple :
+	$ages = ["Peter" => "35", "Ben" => "37", "Joe" => "43"];
+	foreach ($ages as $nom => $age) {
+	  echo "$nom : $age<br>";
+	} 
+
+
+==============
+
+PHP et JSON
+
+https://www.w3schools.com/php/php_json.asp
+
+- Décoder et encoder un JSON -
+
+json_encode(array) permet d'encoder un tableau PHP en objet JSON.
+json_decode(objetJSON) permet de décoder un objet JSON en objet PHP. En passant en paramètre supplémentaire true, on obtient un tableau associatif PHP.
+
+- Accéder aux valeurs décodées -
+
+Avec un objet :
+$obj = json_decode(array)
+$obj->clé;
+
+Avec un tableau associatif :
+$arr = json_decode(array, true)
+$arr["clé"];
+
+==============
+
+PHP filter
+
+https://www.w3schools.com/php/php_filter.asp
+
+les fonctions filter permettent de faire une validation  des variables en fonction d’un type et d’un format donné. Pour ce faire, on utilise la fonction filter_var().
+
+Syntaxe :
+	filter_var($var, FORMAT);
+
+exp :
+	$int = 100;
+	var_dump(filter_var($int, FILTER_VALIDATE_INT));
+
+NB : si la donnée est conforme au format spécifié, filter_var() retourne la valeur de la variable, sinon false, pour pouvoir bien tester la validation, il faut toujours se référer à une valeur différente de false.
+
+Exp de test de validité
+	$int = 100;
+
+	if (filter_var($int, FILTER_VALIDATE_INT) !== false) {
+	  echo ("Integer is valid");
+	} else {
+	  echo ("Integer is not valid");
+	}
+
+Exception pour la valeur 0 (zero)
+La valeur 0 est considérée comme false, donc il faut lui faire un test exceptionnel pour le prendre en considération
+
+	$int = 0;
+
+	if (filter_var($int, FILTER_VALIDATE_INT) === 0 ||     filter_var($int,FILTER_VALIDATE_INT) !== false) 
+{
+    echo ("Integer is valid");
+  } else {
+    echo ("Integer is not valid");
+  }
+PHP met à disposition plusieurs formats qui sont sous forme de FILTERVALIDATE<suffixe> tels que FILTER_VALIDATE_INT et FILTER_VALIDATE_IP. Le bout de code ci-dessous, une fois exécuté, nous donne la liste des suffixes des formats
+<table>
+  <tr>
+    <td>Filter Name</td>
+    <td>Filter ID</td>
+  </tr>
+  <?php
+  foreach (filter_list() as $id => $filter) {
+    echo '<tr><td>' . $filter . '</td><td>' . filter_id($filter) . '</td></tr>';
+  }
+  ?>
+</table>
+NB : avant de valider les données, on peut les nettoyer pour éviter les caractères indésirables ou l’injection de code avec le format FILTER SANITIZE<suffixe>
+Exp :
+  $email = "john.doe@example.com";
+
+  // nettoie la chaine de tt caractere non valide dans un mail
+  $email = filter_var($email, FILTER_SANITIZE_EMAIL);
+
+  // Valider le format e-mail de la chaine nettoyée
+  if (!filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
+    echo ("$email is a valid email address");
+  } else {
+    echo ("$email is not a valid email address");
+  } 
+
+==============
+
+Exceptions
+
+Une exception est un objet qui décrit une erreur ou un comportement inattendu d'un script PHP.
+Syntaxe
+	try {
+	  // code qui peut lever une exception
+	} catch(Exception $e) {
+	  // code exécuté quand une exception est levée
+	}
+
+Exp :
+	function division($divise, $diviseur)
+	{
+	  if ($diviseur == 0) {
+	    throw new Exception("Division par zero", 1);
+	  }
+	  return $divise / $diviseur;
+	}
+
+	try {
+	  echo division(5, 0);
+	} 
+	catch (Exception $e) {
+	  $code = $e->getCode();
+	  $message = $e->getMessage();
+	  $file = $e->getFile();
+	  $line = $e->getLine();
+	  echo "Eception thrown in $file on line $line: [Code $code]
+	  $message";
+	}
+
+Dans l’implémentation de la fonction division, si on détecte une division par 0, et pour éviter le déclenchement d’une erreur fatale, on préfère traiter nous-mêmes et à notre façon cette erreur  on declenche une exception throw new Exception("Division by zero", 1); (on lui attribue le code 1, un code de notre choix pour facilter le debugage, et un message d’erreur ("Division par zero").
+Lors de l’appel de la fonction, et pour surveiller le déclenchement de l’exception, je l’entoure par un bloc try. Si une exception se déclenche dans ce bloc, c’est celui de catch qui prend la releve pour la traiter (dans celui-ci, on peut mettre le traitement qu’on veut).
+
+==============
+
+Include et Require
+
+Pour inclure d’autres fichiers dans un fichier php, on utilise les fonctions include et require.
+En cas d’échec d’inclusion :
+- avec include() : un avertissement (E_WARNING) s’affiche et le script continue à s’exécuter.
+- avec require() : une erreur fatale survient et le script s’arrete.
+Pour inclure un fichier une seule fois, on utilise includeonce() et require once (), c’est tres pratique surtout quand il s’agit des initialisations. On privilégie toujours les  require_ once().
+
+Exp :
+	require_once "header.php";
+	echo "<h1>Bienvenue </h1>";
+
+Le contenu du fichier header sera inclus dans le fichier qui contient l’instruction require_once()
+
+=================
+
+REGEX
+
+les regex cherchent à verifier la conformité d’une chaine de caractères à un pattern (ou modele ou masque)  spécifique.
+Pour utiliser les regex on dispose de 3 fonctions.
+
+preg_match() : permet de vérifier si une chaine est conforme au pattern ou pas, elle retourne 1 si oui, 0 sinon.
+
+syntaxe :
+	preg_match($pattern, $chaine);
+
+syntaxe des patterns : admet des délimiteurs, des symboles spéciaux tels que / / ou # #
+exp :
+	$pattern = "/[a-z]/i";
+	$pattern = "#[a-z]#i";
+
+Symboles des patterns :
+
+- symbole de groupement [] : la chaine doit etre conforme aux symboles du groupe entre []
+Exp :
+	$str = "salut";
+	$pattern = "/[abc]/";
+	var_dump (preg_match($pattern, $str)); // 1
+la chaine contient des caractères du groupe abc
+	$str = "slt";
+	$pattern = "/[abc]/";
+	var_dump (preg_match($pattern, $str));  // 0
+la chaine ne contient pas un caractère du groupe abc
+NB : je peux spécifier aussi des intervalles de données
+	$pattern = "/[a-b]/"; // intervalle de a à z minuscules
+	$pattern = "/[A-Z]/"; // intervalle de A à Z majuscules
+	$pattern = "/[0-9]/"; // chiffres de 0 à 9
+NB : on peut combiner les intervalles
+	$pattern = "/[a-zA-Z0-9]/"; // les lettres min et maj et les chiffres
+- Pattern sans délimiteur de debut et de fin : la chaine doit contenir au moins l’un des symboles du groupe
+	$str = "salut";
+	$pattern = "/[abc]/";
+	var_dump (preg_match($pattern, $str)); // 1 : la chaine contient au moins l’un des symboles //du groupe
+	$str = "slt";
+	$pattern = "/[abc]/"; 
+	var_dump (preg_match($pattern, $str)); // 0 : la chaine ne contient aucun symbole du groupe
+- Symboles de debut et de fin ^ $ (délimiteur de debut et de fin ) : ^ indique le début de la chaine, et $ indique sa fin. La chaine doit STRICTEMENT respecter le pattern à la lettre (en nombre et en ordre).
+	$str = "az";
+	$pattern = "/^[abc]z$/"; 
+	var_dump (preg_match($pattern, $str)); // 1 car ca commence par un sysmbole du groupe abc et suivi par z
+	$str = "dz"; //  0 :ne prend pas car ne commence par a, b ou c
+	$str = "za"; // 0 : doit respecter l’ordre, z en denier lieu
+	$str = "ac"; // 0 : ne finit pas par z
+- symbole de négation ^ : la chaine ne doit pas contenir le symbole précédé par ^
+	$str = "da";
+	$pattern = "/^[^abc][a-z]$/";
+	var_dump(preg_match($pattern, $str)); // 1 : ne commence par aucun des symboles abc et suivi d’un caractère du groupe a-z
+	$str = "cf"; // 0 : cara ca commence par un symbole du groupe abc
+- symbole OU logique | : une expression ou une autre rendent la chaine valide :
+	$str = "d";
+	$pattern = "/^([^abc])|([^0-9])$/";
+	var_dump(preg_match($pattern, $str)); // 1
+	// ([^abc])  |    ([^0-9]) : cette expression est pour une chaine qui ne commence pas par a,b ou c ni un chiffre
+   
+	$str = "5"; // 1 valide par l’expression [^abc] 
+- symbole générique . (point) : n’importe quel caractère
+	$str = "+";
+	$pattern = "/^.$/";
+	var_dump(preg_match($pattern, $str)); //1
+	$str = "5"; //1
+	$str = "f"; //1
+	$str = "D"; //1
+métacaractères des patterns
+\d : correspond à n'importe quel caractère numérique. Identique à [0-9]
+	$str = "7";
+	$pattern = "/^\d$/";
+\D : Correspond à tout caractère non numérique. Identique à [^0-9] (le contraire de \d)
+	$str = "a";
+	$pattern = "/^\D$/";
+	var_dump(preg_match($pattern, $str)); // 1
+
+	$str = "9";
+	$pattern = "/^\D$/";
+	var_dump(preg_match($pattern, $str)); // 0 : car 9 est un chiffre
+\s : Correspond à n'importe quel caractère d'espacement (espace, tabulation, saut de ligne ou retour chariot). Identique à [ \t\n\r]
+\S : le contraire de \s
+\w : Correspond à n'importe quel caractère de mot (défini comme a à z, A à Z, 0 à 9 et le trait de soulignement). Identique à [a-zA-Z_0-9]
+\W : le contraire de \w
+
+Quantificateurs des patterns 
++ : 1,N fois
+	$str = "a";
+	$pattern = "/^[a-z]+$/";
+	var_dump(preg_match($pattern, $str)); // 1 : au moins une fois
+	$str = "abc";  // 1 : plusieurs fois
+	$str = "";  // 0 : chaine vide
+* : 0,N fois
+	$str = "a";
+	$pattern = "/^[a-z]*$/";
+	var_dump(preg_match($pattern, $str)); // 1 : au moins une fois
+
+	$str = "abc"; // 1 : plusieurs fois
+	$str = ""; // 1 : aucune fois
+? : 0,1 fois
+	$str = "a";
+	$pattern = "/^[a-z]?$/";
+	var_dump(preg_match($pattern, $str)); // 1 :  une seule fois
+
+	$str = ""; // 1 : aucune fois
+	$str = "ab"; // 0 : plusieurs fois
+{n} : n est un nombre positif, ca se répète n fois (ni plus ni moins)
+	$str = "abc";
+	$pattern = "/^[a-z]{3}$/";
+	var_dump(preg_match($pattern, $str)); // 1 :  3 fois
+
+	$str = "abcd"; // 0 : autre que 3
+{n, m} : n et m des nombres positifs, ca se répète entre n et m fois (ni plus ni moins)
+	$str = "a";
+	$pattern = "/^[a-z]{1,2}$/";
+	var_dump(preg_match($pattern, $str)); // 1 :  1 fois
+
+	$str = "ab"; // 1 : 2 fois
+	$str = "abc"; // 0 :  sup à 2 fois
+	$str = ""; // 0 :  inf à 1 fois
+{n, } : n : nombre positif, ca se répète au moins n fois (pas moins, plus oui)
+	$str = "abc";
+	$pattern = "/^[a-z]{3,}$/";
+	var_dump(preg_match($pattern, $str)); // 1 :  3 fois minimum
+
+	$str = "ab"; // 0 : 2 fois <3
+	$str = "abcd"; // 1 :  sup à 3 fois
+
+Echappement des caractères spéciaux
+NB : Si votre expression doit rechercher l'un des caractères spéciaux, vous pouvez utiliser une barre oblique inverse ( \ ) pour les échapper. Par exemple, pour rechercher un ou plusieurs points d'interrogation, vous pouvez utiliser l'expression suivante :
+	$pattern = '/?+/';
+	$str = "???";
+	$pattern = "/^\?+$/";
+	var_dump(preg_match($pattern, $str)); // 1 :  contient ? plus qu'une fois
+==> le caractère ? a une signification particulière (caractère spécial), pour le prendre comme un caractère normal, il faut le précéder par le caractère d’échappement \
+
+==================
+
+POO
+
+- Classes abstraites -
+
+une classe abstraite est une classe dont l’une des methodes a besoin des classes filles pour définir son comportement (le comportement est abstrait, il reste inconnu dans la classe mere, on ne peut pas le généraliser et le faire hériter).
+une classe qui contient AU MOINS  une methode abstraite doit etre FORCEMENT déclarée comme classe abstraite.
+Une methode abstraite est une methode qu’on déclare mais qu’on n’implémente pas.
+La définition d’une classe abstraite se fait avec le mot clé abstract
+
+	abstract class Personne
+	{
+	  public $nom;
+	   public $age;
+
+	  abstract public function salutation();
+	
+	   public function afficherAge()
+	   {
+	    echo $this->age;
+	   }
+	}
+
+	class Homme extends Personne {
+	  public function salutation() {
+	   echo "Bonjour Mr $this->nom<br>";
+	  }
+	}
+
+	class Femme extends Personne
+	{
+	  public function salutation()
+	  {
+	   echo "Bonjour Mme $this->nom<br>";  
+	  }
+	}
+
+Une methode abstraite DOIT etre implémentée dans TOUTES les classes filles en respectant sa signature, et on peut ajouter d’autres paramètres si besoin avec un modificateur d’accès supérieur ou égal à celui de la classe mère, par exemple si une methode est déclarée comme protected dans la classe mere, dans la classe fille elle doit etre protected ou public.
+
+- Interfaces -
+
+les interfaces reprennent le meme concept que les classes abstraites mais avec un niveau plus poussé, en voici les différences entre les deux :
+•    Les interfaces NE PEUVENT PAS avoir de propriétés, tandis que les classes abstraites peuvent
+•    Toutes les méthodes d'interface doivent être publiques, tandis que les méthodes de classe abstraite sont publiques ou protégées
+•    Toutes les méthodes d'une interface sont abstraites, elles ne peuvent donc pas être implémentées dans le code et le mot-clé abstract n'est pas nécessaire
+•    Les classes peuvent implémenter une interface tout en héritant d'une autre classe en même temps
+Une classe qui implémente une interface doit implémenter TOUTES ses méthodes.
+
+	interface Animal
+	{
+	  public function faireSon();
+	}
+
+	// Class definitions
+	class Chat implements Animal
+	{
+	  public function faireSon()
+	  {
+	    echo " Meow ";
+	  }
+	}
+
+	class Chien implements Animal
+	{
+	  public function faireSon()
+	  {
+	    echo " Bark ";
+	  }
+	}
+
+- Traits -
+
+un trait ressemble à une classe, sa notion est introduite dans PHP 5.4 pour remédier à l’interdiction de l’héritage multiple.
+un trait fournit des mathodes qui peuvent etre utilisées dans différentes classes.
+Une classe peut utiliser différents traits.
+Un trait est déclaré avec le mot clé trait, et utilisé dans les classes avec le mot clé use.
+
+	trait Addition
+	{
+	  public function ajouter($nb1, $nb2)
+	  {
+	    return $nb1 + $nb2;
+	  }
+	}
+
+	trait Multiplication
+	{
+	  public function multiplier($nb1, $nb2)
+	  {
+	    return $nb1 * $nb2;
+	  }
+	}
+
+	class Calcul
+	{
+	  use Addition, Multiplication;
+
+	  // dans cette fonction on peut utiliser les fonctions issues des deux traits Addition et Multiplication
+	  public function calculer($nb1, $nb2)
+  	  {
+    		echo "Somme : " . $this->ajouter($nb1, $nb2) . "<br> Produit : " . $this->multiplier($nb1, $nb2) . "<br>";
+  	  }
+	}
+
+	$c = new Calcul();
+	$c->calculer(3, 6);
+	echo $c->ajouter(2, 5) . "<br>";
+	echo $c->multiplier(2, 5) . "<br>";
+
+- Namespaces -
+
+les namespaces permettent de regrouper des classes qui traitent le meme sujet ou qui portent le meme nom.
+
+	namespace Html;
+
+	class Table
+	{
+	  public $title = "";
+	  public $numRows = 0;
+	  public function message()
+	  {
+	    echo "<p>Table '{$this->title}' has {$this->numRows} rows.</p>";
+	  }
+	}
+	$table = new Table();
+	$table->title = "My table";
+	$table->numRows = 5;
+
+	$table->message();
+
+NB : la declaration du namespace doit etre la toute premiere instruction dans le fichier.
+On peut déclarer des namespaces imbriqués
+	namespace Code\Html; 
+
+l’utilisation des classes qui proviennent des namespaces implique l’utilisation du chemin de ce dernier au complet
+	$table = new Code\Html\Table();
+
+On peut utiliser un alias pour les noms des namespaces longs
+	use Code\Html as H;
+	$table = new H\Table();
+	//Ou
+	use Code\Html\Table as T;
+	$table = new T();
+
+
+- Requêtes préparées -
+
+function listeVilles()
+{
+  $idcon = connexion();
+  $requete = $idcon->prepare("
+      SELECT * FROM ville ;
+    ");
+  $requete->execute();
+  return $requete->fetchAll(PDO::FETCH_ASSOC);
+}
+
+
+function afficherVilles()
+{
+  $liste = listeVilles();
+?>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+  <div class="container mt-5">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#ID</th>
+          <th scope="col">Nom</th>
+          <th scope="col">Code postal</th>
+          <th scope="col">Population</th>
+          <th scope="col">Superficie</th>
+          <th scope="col">Densité</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <?php
+        foreach ($liste as $colonne => $valeur) {
+        ?> <tr>
+            <th scope="row"><?= $valeur['id'] ?> </th>
+            <td><?= $valeur['nom'] ?></td>
+            <td><?= $valeur['cod_post'] ?></td>
+            <td><?= $valeur['population'] ?></td>
+            <td><?= $valeur['superficie'] ?></td>
+            <td><?= $valeur['densite'] ?></td>
+          </tr>
+
+        <?php
+        }
+        ?>
+      </tbody>
+    </table>
+  </div>
+
+<?php
+
+}
+
+afficherVilles();

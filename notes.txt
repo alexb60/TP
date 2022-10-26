@@ -321,7 +321,7 @@ element.textContent = nouvelleValeur	//Modifie le contenu textuel par la valeur 
 
 - EVENEMENTS -
 
-element.adEventListener("evenement", callback)
+element.addEventListener("evenement", callback)
 
 Par convention le paramètre de l'événement est noté e ou event ou parfois evt
 
