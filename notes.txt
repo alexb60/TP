@@ -302,6 +302,14 @@ variable = condition ? traitement vrai : traitement faux ;
 Switch		variable		true
 Case		valeurs exactes		expressions
 
+switch (condition {
+  case cas:
+    traitement
+    break;
+  default:
+    traitement
+}
+
 - FILTER -
 
 tab2 = tab.filter(callback)
